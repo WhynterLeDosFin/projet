@@ -11,41 +11,52 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import projetFX.view.ConnectionView;
+import projetFX.view.TestView;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 
 public class ProjetFX extends Application {
-    public static void main(String[] args) {
+
+    private static Stage currentStage;
+    private static Socket client;
+    private static BufferedReader reader;
+    private static PrintWriter out;
+
+    public static String readLine() throws IOException {
+        return reader.readLine();
+    }
+
+    public static void println(String line){
+        out.println(line);
+    }
+
+    public static void setClient(Socket client) throws IOException {
+        ProjetFX.client = client;
+        reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
+        out = new PrintWriter(client.getOutputStream(), true);
+    }
+
+    public static void setScene(Scene scene){
+        currentStage.setScene(scene);
+    }
+
+    public static void main(String[] args) throws IOException {
+        /*Socket connection = new Socket("localhost", 8888);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        PrintWriter out = new PrintWriter(connection.getOutputStream(), true);
+        out.println("Coucou je suis le client");
+        System.out.println("received = " + reader.readLine());*/
         launch();
     }
     public void start(Stage stage) throws IOException {
-        HBox hbox = new HBox();
-        Label label1 = new Label("burnes");
-        Label label2 = new Label("oe");
-        hbox.getChildren().add(label1);
-        hbox.getChildren().add(label2);
-        FXMLLoader loader = new FXMLLoader();
-        var root = (Parent)loader.load(ProjetFX.class.getResourceAsStream("/test1.fxml"));
-        stage.setScene(new Scene(hbox));
+        ProjetFX.currentStage = stage;
+        ProjetFX.setScene(new ConnectionView());
         stage.show();
-    }/*
-   @Override
-   public void start(Stage primaryStage) {
-       primaryStage.setTitle("Hello World!");
-       Button btn = new Button();
-       btn.setText("Say 'Hello World'");
-       btn.setOnAction(new EventHandler<ActionEvent>() {
-
-           @Override
-           public void handle(ActionEvent event) {
-               System.out.println("Hello World!");
-           }
-       });
-
-       StackPane root = new StackPane();
-       root.getChildren().add(btn);
-       primaryStage.setScene(new Scene(root, 300, 250));
-       primaryStage.show();
-   }*/
+    }
 }
