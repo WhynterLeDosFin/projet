@@ -5,7 +5,9 @@ projetFX/ProjetFX.class
 projetFX/view/View.class
 projetFX/view/AddConsoleView.class
 projetFX/view/SelectConsoleView.class
+projetFX/controller/ConsoleController.class
 projetFX/controller/MenuController.class
 projetFX/controller/ConnectionController.class
 projetFX/view/ConnectionView.class
+projetFX/controller/GameController.class
 projetFX/controller/AppController.class

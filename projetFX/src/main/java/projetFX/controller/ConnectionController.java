@@ -43,6 +43,5 @@ public class ConnectionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorMessage.setVisible(false);
-
     }
 }
