@@ -1,0 +1,20 @@
+Liste de jeux
+  NomJeu
+  ImageJeu
+  NotationJeu*
+  DescriptionJeu*
+  
+Liste des consoles
+  NomConsole
+  ImageConsole
+  
+Liste des users
+  Identifiant
+  MotDePasse
+  
+Tierlist*
+  TitreTierList
+  ElementTierList
+  
+Légende:
+-*: élément possible
