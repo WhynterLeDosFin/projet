@@ -12,5 +12,9 @@ Liste des users
   Identifiant
   MotDePasse
   
+Tierlist*
+  TitreTierList
+  ElementTierList
+  
 Légende:
 -*: élément possible
