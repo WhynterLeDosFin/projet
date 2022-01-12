@@ -2,9 +2,12 @@ projetFX/view/SelectGameView.class
 projetFX/view/AddGameView.class
 projetFX/view/TestView.class
 projetFX/ProjetFX.class
+projetFX/controller/LoginController.class
 projetFX/view/View.class
 projetFX/view/AddConsoleView.class
+projetFX/view/FirstView.class
 projetFX/view/SelectConsoleView.class
+projetFX/controller/FirstViewController.class
 projetFX/controller/ConsoleController.class
 projetFX/controller/MenuController.class
 projetFX/controller/ConnectionController.class

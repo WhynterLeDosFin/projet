@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import projetFX.view.ConnectionView;
+import projetFX.view.FirstView;
 import projetFX.view.TestView;
 
 import java.io.BufferedReader;
@@ -56,7 +57,7 @@ public class ProjetFX extends Application {
     }
     public void start(Stage stage) throws IOException {
         ProjetFX.currentStage = stage;
-        ProjetFX.setScene(new ConnectionView());
+        ProjetFX.setScene(new FirstView());
         stage.show();
     }
 }
