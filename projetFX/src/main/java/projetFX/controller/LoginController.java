@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import projetFX.ProjetFX;
+import projetFX.view.FirstView;
+import projetFX.view.RegisterView;
 import projetFX.view.TestView;
 
 import java.io.IOException;
@@ -20,7 +22,7 @@ import java.sql.Statement;
 public class LoginController {
 
     @FXML
-    private Button cancelButton;
+    private Button returnButton;
 
     @FXML
     private Label loginMessageLabel;
@@ -53,9 +55,8 @@ public class LoginController {
         }
     }
 
-    public void cancelButtonOnAction(ActionEvent e){ // Fct qui permet de close l'application, pouvant se passer de la windows top bar
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+    public void returnButtonOnAction(ActionEvent e){ // Fct qui permet de close l'application, pouvant se passer de la windows top bar
+        ProjetFX.setScene(new FirstView());
     }
 
     public void validateLogin(){

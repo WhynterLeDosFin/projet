@@ -17,7 +17,7 @@
     <left>
         <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-color: #263F70;" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" layoutX="3.0" layoutY="131.0" prefHeight="30.0" prefWidth="227.0" text="MacroManie" textAlignment="CENTER" textFill="WHITE">
+                <Label alignment="CENTER" layoutX="3.0" layoutY="131.0" prefHeight="30.0" prefWidth="227.0" text="Game Book" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Verdana Bold" size="20.0" />
                     </font>
@@ -68,7 +68,7 @@
     <center>
         <AnchorPane prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
             <children>
-                <Label alignment="CENTER" layoutY="14.0" prefHeight="30.0" prefWidth="290.0" text="S'inscrire" textAlignment="CENTER">
+                <Label alignment="CENTER" layoutY="14.0" prefHeight="30.0" prefWidth="290.0" text="Page d'inscription" textAlignment="CENTER">
                     <font>
                         <Font name="Arial" size="16.0" />
                     </font>
@@ -96,7 +96,7 @@
                         <DropShadow />
                     </effect>
                 </Button>
-                <Button fx:id="cancelButton" layoutX="31.0" layoutY="342.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="30.0" prefWidth="228.0" style="-fx-background-color: #263F70;" text="Quitter" textFill="WHITE">
+                <Button fx:id="returnButton" layoutX="31.0" layoutY="342.0" mnemonicParsing="false" onAction="#returnButtonOnAction" prefHeight="30.0" prefWidth="228.0" style="-fx-background-color: #263F70;" text="Retour" textFill="WHITE">
                     <font>
                         <Font name="Arial" size="13.0" />
                     </font>

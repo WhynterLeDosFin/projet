@@ -13,15 +13,19 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetFX.controller.FirstViewController">
    <left>
-      <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-color: #263F70;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-color: #263F70;">
+         <effect>
+            <DropShadow />
+         </effect>
          <children>
-            <Label alignment="CENTER" layoutX="3.0" layoutY="131.0" prefHeight="30.0" prefWidth="227.0" text="MacroManie" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="3.0" layoutY="131.0" prefHeight="30.0" prefWidth="227.0" text="Game Book" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Verdana Bold" size="20.0" />
                </font>
                <effect>
                   <DropShadow />
-               </effect></Label>
+               </effect>
+            </Label>
             <Label alignment="CENTER" layoutX="3.0" layoutY="170.0" prefHeight="30.0" prefWidth="227.0" text="Gestionnaire de librairie " textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial" size="18.0" />
@@ -58,9 +62,6 @@
                </effect>
             </Label>
          </children>
-         <effect>
-            <DropShadow />
-         </effect>
       </AnchorPane>
    </left>
    <center>
