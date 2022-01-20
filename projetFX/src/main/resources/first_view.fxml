@@ -67,7 +67,7 @@
    <center>
       <AnchorPane prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" layoutY="14.0" prefHeight="30.0" prefWidth="290.0" text="Bienvenue sur MacroManie" textAlignment="CENTER">
+            <Label alignment="CENTER" layoutY="14.0" prefHeight="30.0" prefWidth="290.0" text="Bienvenue sur GameBook" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>

@@ -1,19 +1,10 @@
 package projetFX;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import projetFX.view.ConnectionView;
+import projetFX.controller.ConnectionClientController;
 import projetFX.view.FirstView;
-import projetFX.view.TestView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,9 +16,12 @@ import java.net.Socket;
 public class ProjetFX extends Application {
 
     private static Stage currentStage;
-    private static Socket client;
+    private static Socket clientTwo;
+    private static ConnectionClientController client = null;
     private static BufferedReader reader;
     private static PrintWriter out;
+    static final String IP = "127.0.0.1";
+    static final int PORT = 8888;
 
     public static String readLine() throws IOException {
         return reader.readLine();
@@ -38,7 +32,7 @@ public class ProjetFX extends Application {
     }
 
     public static void setClient(Socket client) throws IOException {
-        ProjetFX.client = client;
+        ProjetFX.clientTwo = clientTwo;
         reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
         out = new PrintWriter(client.getOutputStream(), true);
     }
@@ -53,6 +47,21 @@ public class ProjetFX extends Application {
         PrintWriter out = new PrintWriter(connection.getOutputStream(), true);
         out.println("Coucou je suis le client");
         System.out.println("received = " + reader.readLine());*/
+
+
+        Socket socket;
+
+        try {
+            socket = new Socket(IP, PORT);
+            client = new ConnectionClientController(socket);
+            client.uuid();
+        } catch (IOException e) {
+            System.out.println("Serveur eteint");
+            e.printStackTrace();
+            //TODO -> Afficher une fenetre erreur avec le message serveur eteint
+            System.exit(0);
+        }
+
         launch();
     }
     public void start(Stage stage) throws IOException {
