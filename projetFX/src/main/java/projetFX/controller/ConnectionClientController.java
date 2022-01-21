@@ -1,7 +1,5 @@
 package projetFX.controller;
 
-//package com.kikichante.client;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -45,6 +43,7 @@ public class ConnectionClientController {
 
         public void connexion(String username, String password) {
             String message = "LOGIN:" + username + ":" + password;
+            System.out.println(message);
             println(message);
         }
 

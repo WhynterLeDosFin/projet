@@ -2,6 +2,8 @@ package projetFX.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -9,15 +11,10 @@ import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import projetFX.ProjetFX;
 import projetFX.view.FirstView;
-import projetFX.view.RegisterView;
 import projetFX.view.TestView;
 
 import java.io.IOException;
 import java.net.Socket;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class LoginController {
 
@@ -45,7 +42,20 @@ public class LoginController {
     @FXML
     public Label errorMessage;
 
-    public void loginButtonOnAction(ActionEvent e){
+    private String stageUsername;
+
+    private ConnectionClientController connectionClient;
+
+
+    public void setClient(ConnectionClientController connectionClient) { this.connectionClient = connectionClient; }
+
+
+    @FXML
+    public void goToMenu(){
+        ProjetFX.setScene(new TestView());
+    }
+
+    /*public void loginButtonOnAction(ActionEvent e){
 
         if (!usernameTextField.getText().isBlank() && !passwordPasswordField.getText().isBlank()){
             //loginMessageLabel.setText("Essai de connexion..."); // Ajoute une phrase lors de la tentative de connexion sur l'UI si et seulement si, des informations sont rentrées dans les champs
@@ -53,7 +63,7 @@ public class LoginController {
         } else {
             loginMessageLabel.setText("Entrez vos informations de connexion.");
         }
-    }
+    }*/
 
     public void returnButtonOnAction(ActionEvent e){ // Fct qui permet de close l'application, pouvant se passer de la windows top bar
         ProjetFX.setScene(new FirstView());
@@ -98,5 +108,44 @@ public class LoginController {
             e.printStackTrace();
         }*/
 
+    }
+
+
+    public void loginButtonOnAction(ActionEvent actionEvent) {
+        Stage primaryStage = (Stage)usernameTextField.getScene().getWindow();
+        primaryStage.setResizable(false);
+
+        if(usernameTextField.getText() != "" && passwordPasswordField.getText() != "") {
+            System.out.println(usernameTextField.getText());
+            System.out.println(passwordPasswordField.getText());
+            connectionClient.connexion(usernameTextField.getText(), passwordPasswordField.getText());
+            boolean isConnected = false;
+            try {
+                String res = connectionClient.readLine();
+                if(res.startsWith("LOGIN")) {
+                    String[] resMessage = res.split(":");
+                    if (resMessage[1].equals("OK"))
+                        isConnected = true;
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if(isConnected) {
+                stageUsername = usernameTextField.getText();
+                goToMenu();
+            } else {
+                usernameTextField.getStyleClass().add("textfieldError");
+                usernameTextField.getStyleClass().add("textfieldError");
+            }
+        } else {
+            if (usernameTextField.getText() == "") {
+                usernameTextField.getStyleClass().add("textfieldError");
+            }
+            if (usernameTextField.getText() == "") {
+                usernameTextField.getStyleClass().add("textfieldError");
+            }
+        }
     }
 }
