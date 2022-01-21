@@ -3,6 +3,7 @@ projetFX/controller/RegisterController.class
 projetFX/view/View.class
 projetFX/view/FirstView.class
 projetFX/view/ConnectionView.class
+projetFX/controller/ConnectionClientController.class
 projetFX/controller/GameController.class
 projetFX/controller/AppController.class
 projetFX/view/SelectGameView.class
