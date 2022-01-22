@@ -14,11 +14,12 @@
       <TextField id="nameField" fx:id="nameField" layoutX="33.0" layoutY="84.0" prefHeight="26.0" prefWidth="183.0" />
       <Label layoutX="260.0" layoutY="67.0" text="Annee" />
       <TextField id="yearField" fx:id="yearField" layoutX="253.0" layoutY="84.0" prefHeight="26.0" prefWidth="183.0" />
-      <Label id="dragDropLabel" fx:id="dragDropLabel" layoutX="120.0" layoutY="149.0" prefHeight="87.0" prefWidth="228.0" style="-fx-background-color: #E0E0E0#E0E0E0; -fx-background-radius: 15 15 15 15;" text=" DRAG &amp; DROP YOUR PIC HERE">
+      <Label id="dragDropLabel" fx:id="dragDropLabel" layoutX="120.0" layoutY="149.0" onDragDone="#onDragDropped" prefHeight="87.0" prefWidth="228.0" style="-fx-background-color: #E0E0E0#E0E0E0; -fx-background-radius: 15 15 15 15;" text=" DRAG &amp; DROP YOUR PIC HERE">
          <font>
             <Font name="Arial Black" size="13.0" />
          </font>
       </Label>
       <Button id="validateButton" fx:id="validateButton" layoutX="207.0" layoutY="260.0" mnemonicParsing="false" onMouseClicked="#backToMenu" text="Valider" />
+      <Button id="selectButton" fx:id="selectButton" layoutX="207.0" layoutY="117.0" mnemonicParsing="false" onMouseClicked="#onSelectClic" text="Select" />
    </children>
 </Pane>

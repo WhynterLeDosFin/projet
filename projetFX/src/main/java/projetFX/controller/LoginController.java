@@ -118,7 +118,7 @@ public class LoginController {
         if(usernameTextField.getText() != "" && passwordPasswordField.getText() != "") {
             System.out.println(usernameTextField.getText());
             System.out.println(passwordPasswordField.getText());
-            connectionClient = new ConnectionClientController(new Socket("127.0.0.1", 8888));
+            connectionClient = new ConnectionClientController(new Socket("127.0.0.1", DEFAULT_SERVER_PORT));
             connectionClient.connexion(usernameTextField.getText(), passwordPasswordField.getText());
             boolean isConnected = false;
             try {
