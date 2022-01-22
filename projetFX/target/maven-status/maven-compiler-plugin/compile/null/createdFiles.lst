@@ -10,6 +10,7 @@ projetFX/view/SelectGameView.class
 projetFX/view/TestView.class
 projetFX/view/RegisterView.class
 projetFX/ProjetFX.class
+projetFX/Constructors.class
 projetFX/controller/LoginController.class
 projetFX/view/AddConsoleView.class
 projetFX/view/SelectConsoleView.class
