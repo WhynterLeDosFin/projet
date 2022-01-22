@@ -111,13 +111,14 @@ public class LoginController {
     }
 
 
-    public void loginButtonOnAction(ActionEvent actionEvent) {
+    public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
         Stage primaryStage = (Stage)usernameTextField.getScene().getWindow();
         primaryStage.setResizable(false);
 
         if(usernameTextField.getText() != "" && passwordPasswordField.getText() != "") {
             System.out.println(usernameTextField.getText());
             System.out.println(passwordPasswordField.getText());
+            connectionClient = new ConnectionClientController(new Socket("127.0.0.1", 8888));
             connectionClient.connexion(usernameTextField.getText(), passwordPasswordField.getText());
             boolean isConnected = false;
             try {

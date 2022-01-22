@@ -21,7 +21,6 @@ public class ServerATK {
 
         new CommandServer(bdd, activeClient, activeGames).start();
 
-
         try (ServerSocket serverSocket  = new ServerSocket(8888)) {
             while (true) {
                 System.out.println("Waiting new client");

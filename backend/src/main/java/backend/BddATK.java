@@ -12,10 +12,17 @@ public class BddATK {
 
     public BddATK() throws BddExceptionATK {
         try {
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
             this.connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             System.out.println("Erreur de connexion " + e);
             System.exit(0);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
         }
     }
 
