@@ -67,4 +67,20 @@ public class BddATK {
         }
         return true;
     }
+
+    public boolean queryCreateConsole(String gameName, String maker, int year, String image) {
+        try {
+            PreparedStatement creationConsole = this.connection.prepareStatement("INSERT INTO consoles VALUE (?,?,?,?)");
+
+            creationConsole.setString(1, gameName);
+            creationConsole.setString(2, maker);
+            creationConsole.setInt(3, year);
+            creationConsole.setString(4, image);
+
+            creationConsole.executeUpdate();
+        } catch (SQLException e) {
+            return false;
+        }
+        return true;
+    }
 }

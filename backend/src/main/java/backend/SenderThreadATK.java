@@ -103,6 +103,20 @@ public class SenderThreadATK extends Thread {
         else if (message.startsWith("CREATECONSOLE")) {
             String[] messageConsole = message.split(":");
             System.out.println("new create console");
+            // console --> nom image nullok annee nullok fabricant
+            // TODO: check remplissage de year image if null
+            String gameName = messageConsole[1];
+            String maker = messageConsole[2];
+            String yearString = messageConsole[3];
+            String image = messageConsole[4];
+
+            if (bdd.queryCreateConsole(gameName, maker, Integer.parseInt(yearString), image)) {
+                System.out.println("Nouvelle console : " + gameName);
+                this.clientServer.println("CREATECONSOLE:OK");
+            } else {
+                System.out.println("ERROR creation console : " + gameName);
+                this.clientServer.println("CREATECONSOLE:KO");
+            }
         }
         else {
             System.out.println("message = " + message);
