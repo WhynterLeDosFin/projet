@@ -16,7 +16,7 @@ public class ClientServerATK {
     private String userId;
     private String usernameFromBdd;
     private ArrayList<ClientServerATK> activeClient;
-    private GameServer game;
+    //private GameServer game;
 
     public ClientServerATK(Socket socket, ArrayList<ClientServerATK> activeClient) throws IOException {
         this.socket = socket;
@@ -28,17 +28,6 @@ public class ClientServerATK {
     // !! WARNING !! if IOException -> disconnect
     public String readLine() throws IOException{
         var line = this.reader.readLine();
-        if (line == null) {
-            //Delete le client de la liste des clients
-            for (ClientServerATK c : activeClient) {
-                if (c.userId.equals(this.userId)) {
-                    activeClient.remove(c);
-                    break;
-                }
-            }
-
-            throw new IOException("Client disconnected");
-        }
         return line;
     }
 
@@ -64,14 +53,14 @@ public class ClientServerATK {
 
     /**************************/
 
-    public GameServer getGame() {
+    /*public GameServer getGame() {
         return game;
     }
 
     public void setGame(GameServer game) {
         this.game = game;
     }
-
+*/
     /**************************/
 
     //Permet l'envoie d'un message

@@ -7,13 +7,13 @@ public class SenderThreadATK extends Thread {
 
     private ClientServerATK clientServer;
     private BddATK bdd;
-    private ArrayList<GameServer> activeGame;
+    //private ArrayList<GameServer> activeGame;
     private ArrayList<ClientServerATK> activeClient;
 
-    public SenderThreadATK(ClientServerATK clientServer, BddATK bdd, ArrayList<GameServer> activeGame, ArrayList<ClientServerATK> activeClient) {
+    public SenderThreadATK(ClientServerATK clientServer, BddATK bdd, ArrayList<ClientServerATK> activeClient) {
         this.clientServer = clientServer;
         this.bdd = bdd;
-        this.activeGame = activeGame;
+       // this.activeGame = activeGame;
         this.activeClient = activeClient;
     }
 
@@ -82,32 +82,6 @@ public class SenderThreadATK extends Thread {
                 System.out.println("ERROR inscription : " + username);
                 this.clientServer.println("INSCRIPTION:KO");
             }
-        }
-        else if (message.startsWith("CREATEGAME")) {
-            System.out.println("Creation d'une partie");
-            //TODO -> Creation d'une partie
-            String[] messageCreateGame = message.split(":");
-            String gameName = messageCreateGame[1];
-            boolean createGame = true;
-            //Creation de la partie et run
-            for (GameServer game : activeGame) {
-                if (game.getGameName().equals(gameName)) {
-                    createGame = false;
-                    this.clientServer.println("CREATEGAME:KO");
-                }
-            }
-            if (createGame) {
-                GameServer game = new GameServer(messageCreateGame[1]);
-                this.activeGame.add(game);
-                this.clientServer.setGame(game);
-                game.addClient(this.clientServer);
-                System.out.println("activeGame = " + activeGame);
-                this.clientServer.println("CREATEGAME:OK");
-            }
-        }
-        else if (message.startsWith("GETCURRENTLISTGAME")) {
-            //TODO -> Return la liste des games
-            System.out.println("Current game list");
         }
         else {
             System.out.println("message = " + message);

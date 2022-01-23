@@ -7,13 +7,11 @@ public class CommandServer extends Thread {
 
     BddATK bdd;
     ArrayList<ClientServerATK> activeClient;
-    ArrayList<GameServer> activeGames;
     Scanner scanner = new Scanner(System.in);
 
-    public CommandServer(BddATK bdd, ArrayList<ClientServerATK> activeClient, ArrayList<GameServer> activeGames) {
+    public CommandServer(BddATK bdd, ArrayList<ClientServerATK> activeClient) {
         this.bdd = bdd;
         this.activeClient = activeClient;
-        this.activeGames = activeGames;
     }
 
     @Override
@@ -23,14 +21,14 @@ public class CommandServer extends Thread {
             command = scanner.nextLine();
             if (command.equals("exit"))
                 break;
-            handle(command);
+            //handle(command);
         }
         System.out.println("Fermeture du serveur - BDD");
         bdd.closeBdd();
         System.exit(0);
     }
 
-    public void handle(String cmd) {
+   /* public void handle(String cmd) {
         if (cmd.equals("clients")){
             System.out.println("Liste des clients : ");
             for (ClientServerATK c : activeClient) {
@@ -42,6 +40,6 @@ public class CommandServer extends Thread {
                 System.out.println(game.getGameName() + " - ");
             }
         }
-    }
+    }*/
 
 }

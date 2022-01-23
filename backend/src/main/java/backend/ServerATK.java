@@ -17,9 +17,9 @@ public class ServerATK {
         }
 
         ArrayList<ClientServerATK> activeClient = new ArrayList<>();
-        ArrayList<GameServer> activeGames = new ArrayList<>();
+        //ArrayList<GameServer> activeGames = new ArrayList<>();
 
-        new CommandServer(bdd, activeClient, activeGames).start();
+        new CommandServer(bdd, activeClient).start();
 
         try (ServerSocket serverSocket  = new ServerSocket(5000)) {
             while (true) {
@@ -27,7 +27,7 @@ public class ServerATK {
                 Socket socket = serverSocket.accept();
                 ClientServerATK clientServer = new ClientServerATK(socket, activeClient);
                 activeClient.add(clientServer);
-                new SenderThreadATK(clientServer, bdd, activeGames, activeClient).start();
+                new SenderThreadATK(clientServer, bdd, activeClient).start();
             }
         }
     }
