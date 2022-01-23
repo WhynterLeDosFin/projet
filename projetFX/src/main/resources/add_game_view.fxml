@@ -1,12 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetFX.controller.GameController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetFX.controller.GameController">
    <children>
-      <Label layoutX="259.0" layoutY="176.0" text="AddGameView" />
-      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#backToMenu" text="Retour" />
+      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#backToMenu" text="Retour" />
+      <TextField id="nameField" fx:id="nameField" layoutX="41.0" layoutY="67.0" />
+      <TextField id="yearField" fx:id="yearField" layoutX="252.0" layoutY="67.0" />
+      <ChoiceBox id="gradePicker" fx:id="gradePicker" layoutX="41.0" layoutY="121.0" prefHeight="26.0" prefWidth="53.0" />
+      <Label id="dragDropLabel" fx:id="dragDropLabel" layoutX="144.0" layoutY="167.0" prefHeight="37.0" prefWidth="267.0" style="-fx-background-color: #E0E0E0#E0E0E0; -fx-background-radius: 15 15 15 15;" text="   File path">
+         <font>
+            <Font name="Arial" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="50.0" text="Nom" />
+      <Label layoutX="257.0" layoutY="50.0" text="Année" />
+      <Button id="selectButton" fx:id="selectButton" layoutX="40.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#onSelectClic" text="Selectionner" />
+      <Label layoutX="46.0" layoutY="104.0" text="Note" />
+      <ChoiceBox id="playerNbPicker" fx:id="playerNbPicker" layoutX="144.0" layoutY="121.0" prefHeight="26.0" prefWidth="53.0" />
+      <Label layoutX="149.0" layoutY="104.0" text="Nb J" />
+      <ChoiceBox id="onlinePicker" fx:id="onlinePicker" layoutX="251.0" layoutY="121.0" prefHeight="26.0" prefWidth="53.0" />
+      <Label layoutX="256.0" layoutY="104.0" text="En ligne" />
+      <ChoiceBox id="finishPicker" fx:id="finishPicker" layoutX="358.0" layoutY="121.0" prefHeight="26.0" prefWidth="53.0" />
+      <Label layoutX="363.0" layoutY="104.0" text="Fini" />
+      <TextField id="buyField" fx:id="buyField" layoutX="41.0" layoutY="227.0" promptText="MM/AAAA" />
+      <Label layoutX="46.0" layoutY="210.0" text="Date d'achat" />
+      <ChoiceBox id="consolePicker" fx:id="consolePicker" layoutX="251.0" layoutY="227.0" prefHeight="26.0" prefWidth="159.0" />
+      <Label layoutX="256.0" layoutY="210.0" text="Plateforme" />
+      <ChoiceBox id="editorPicker" fx:id="editorPicker" layoutX="147.0" layoutY="277.0" prefHeight="26.0" prefWidth="159.0" />
+      <Label layoutX="152.0" layoutY="260.0" text="Editeurs" />
    </children>
 </Pane>

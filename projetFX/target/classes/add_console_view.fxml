@@ -15,14 +15,15 @@
       <TextField id="nameField" fx:id="nameField" layoutX="33.0" layoutY="84.0" prefHeight="26.0" prefWidth="183.0" />
       <Label layoutX="260.0" layoutY="67.0" text="Annee" />
       <TextField id="yearField" fx:id="yearField" layoutX="253.0" layoutY="84.0" prefHeight="26.0" prefWidth="183.0" />
-      <Label id="dragDropLabel" fx:id="dragDropLabel" layoutX="112.0" layoutY="143.0" prefHeight="42.0" prefWidth="324.0" style="-fx-background-color: #E0E0E0#E0E0E0; -fx-background-radius: 15 15 15 15;" text="   File path">
+      <Label id="dragDropLabel" fx:id="dragDropLabel" layoutX="140.0" layoutY="143.0" prefHeight="42.0" prefWidth="296.0" style="-fx-background-color: #E0E0E0#E0E0E0; -fx-background-radius: 15 15 15 15;" text="   File path">
          <font>
-            <Font name="Arial Black" size="13.0" />
+            <Font name="Arial" size="13.0" />
          </font>
       </Label>
       <Button id="validateButton" fx:id="validateButton" layoutX="207.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#backToMenu" text="Valider" />
-      <Button id="selectButton" fx:id="selectButton" layoutX="34.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#onSelectClic" text="Select" />
+      <Button id="selectButton" fx:id="selectButton" layoutX="34.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#onSelectClic" text="Selectionner" />
       <ChoiceBox id="constructorPicker" fx:id="constructorPicker" layoutX="103.0" layoutY="219.0" prefWidth="150.0" />
       <Label layoutX="39.0" layoutY="223.0" text="Frabricant" />
+      <Label layoutX="154.0" layoutY="126.0" text="Logo" />
    </children>
 </Pane>
