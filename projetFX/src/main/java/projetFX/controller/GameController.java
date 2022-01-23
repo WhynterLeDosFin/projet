@@ -84,7 +84,7 @@ public class GameController implements Initializable {
     public void onSelectClic() throws IOException {
         FileChooser fileChooser = new FileChooser();
         ArrayList list = new ArrayList<String>();
-        list.add("*.png"); list.add("$.jpg"); list.add("$.jpeg");
+        list.add("*.png"); list.add("*.jpg"); list.add("*.jpeg");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG, JPEG, JPG Files", list));
         File f = fileChooser.showOpenDialog(null);
 

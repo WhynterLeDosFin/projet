@@ -3,6 +3,7 @@ package projetFX.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -15,8 +16,12 @@ import projetFX.view.TestView;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
+
+    public Socket client;
 
     @FXML
     private Button returnButton;
@@ -49,6 +54,10 @@ public class LoginController {
 
     public void setClient(ConnectionClientController connectionClient) { this.connectionClient = connectionClient; }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.client = ProjetFX.socket;
+    }
 
     @FXML
     public void goToMenu(){
@@ -80,7 +89,7 @@ public class LoginController {
         System.out.println("Connection en cours");
         var host = "127.0.0.1";
         try{
-            Socket client = new Socket(host, DEFAULT_SERVER_PORT);
+            this.client = new Socket(host, DEFAULT_SERVER_PORT);
             ProjetFX.setClient(client);
             ProjetFX.setScene(new TestView());
         }catch(IOException e){

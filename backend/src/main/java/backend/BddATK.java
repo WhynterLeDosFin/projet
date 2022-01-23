@@ -68,9 +68,9 @@ public class BddATK {
         return true;
     }
 
-    public boolean queryCreateConsole(String gameName, String maker, String year, String image) {
+    public boolean queryCreateConsole(String gameName, String constructor, String year, String image) {
         try {
-            PreparedStatement creationConsole = this.connection.prepareStatement("INSERT INTO consoles VALUE (?,?,?,?)");
+            PreparedStatement creationConsole = this.connection.prepareStatement("INSERT INTO consoles VALUES (?,?,?,?)");
 
             creationConsole.setString(1, gameName);
             if (!image.isEmpty()) {
@@ -79,9 +79,11 @@ public class BddATK {
             if (!year.isEmpty()) {
                 creationConsole.setInt(3, Integer.parseInt(year));
             }
-            creationConsole.setString(4, maker);
+            creationConsole.setString(4, constructor);
 
             creationConsole.executeUpdate();
+            System.out.println("creationConsole = " + creationConsole.executeUpdate());
+
         } catch (SQLException e) {
             return false;
         }

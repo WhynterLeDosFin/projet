@@ -20,6 +20,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -27,9 +28,19 @@ import java.util.ResourceBundle;
 
 public class ConsoleController implements Initializable {
 
+    private Socket socket;
+    private ConnectionClientController connectionClientController;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        socket = ProjetFX.socket;
         this.setPickerItems();
+        try {
+            connectionClientController = new ConnectionClientController(socket);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
@@ -63,13 +74,23 @@ public class ConsoleController implements Initializable {
     public void onSelectClic() throws IOException {
         FileChooser fileChooser = new FileChooser();
         ArrayList list = new ArrayList<String>();
-        list.add("*.png"); list.add("$.jpg"); list.add("$.jpeg");
+        list.add("*.png"); list.add("*.jpg"); list.add("*.jpeg");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG, JPEG, JPG Files", list));
         File f = fileChooser.showOpenDialog(null);
 
         if (f != null){
             dragDropLabel.setText(f.getAbsolutePath());
         }
+    }
+
+
+    @FXML
+    public void onValidateClic() throws IOException {
+        connectionClientController.createConsole(
+                this.nameField.getText(),
+                String.valueOf(this.constructorPicker.getValue()),
+                this.yearField.getText(),
+                getEncodedString(this.dragDropLabel.getText()));
     }
 
     @FXML

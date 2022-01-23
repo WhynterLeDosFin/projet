@@ -61,5 +61,10 @@ public class ConnectionClientController {
             String message = "CREATEGAME:"+gameName;
             println(message);
         }
+
+        public void createConsole(String gameName, String constructor, String year, String image) {
+            String message = "CREATECONSOLE:"+gameName+":"+constructor+":"+year+":"+image;
+            println(message);
+        }
     }
 

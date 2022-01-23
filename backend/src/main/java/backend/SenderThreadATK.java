@@ -7,14 +7,10 @@ public class SenderThreadATK extends Thread {
 
     private ClientServerATK clientServer;
     private BddATK bdd;
-    private ArrayList<GameServer> activeGame;
-    private ArrayList<ClientServerATK> activeClient;
 
-    public SenderThreadATK(ClientServerATK clientServer, BddATK bdd, ArrayList<GameServer> activeGame, ArrayList<ClientServerATK> activeClient) {
+    public SenderThreadATK(ClientServerATK clientServer, BddATK bdd) {
         this.clientServer = clientServer;
         this.bdd = bdd;
-        this.activeGame = activeGame;
-        this.activeClient = activeClient;
     }
 
     @Override
@@ -22,6 +18,7 @@ public class SenderThreadATK extends Thread {
         try {
             while (true) {
                 var line = this.clientServer.readLine();
+                System.out.println("line = " + line);
                 handleLine(line);
             }
         } catch (IOException e) {
@@ -31,11 +28,7 @@ public class SenderThreadATK extends Thread {
     }
 
     public void handleLine(String message) {
-        if (message.startsWith("UUID")) {
-            String[] messageUUID = message.split(":");
-            this.clientServer.setUserId(messageUUID[1]);
-        }
-        else if (message.startsWith("LOGIN")) {  //LOGIN:USERNAME:PASSWORD
+         if (message.startsWith("LOGIN")) {  //LOGIN:USERNAME:PASSWORD
             String[] messageConnexion = message.split(":");
             String username = messageConnexion[1];
             String password = messageConnexion[2];
@@ -43,11 +36,6 @@ public class SenderThreadATK extends Thread {
             if (bdd.queryConnexion(username, password)) {
                 System.out.println("Connexion OK");
                 boolean isAlreadyConnected = false;
-                for (ClientServerATK c : activeClient) {
-                    if (!(c.getUsernameFromBdd() == null))
-                        if (c.getUsernameFromBdd().equals(username))
-                            isAlreadyConnected = true;
-                }
                 if (isAlreadyConnected) {
                     this.clientServer.println("LOGIN:KO");
                 } else {
@@ -73,41 +61,20 @@ public class SenderThreadATK extends Thread {
                 this.clientServer.println("INSCRIPTION:KO");
             }
         }
-        else if (message.startsWith("CREATEGAME")) {
-            System.out.println("Creation d'une partie");
-            //TODO -> Creation d'une partie
-            String[] messageCreateGame = message.split(":");
-            String gameName = messageCreateGame[1];
-            boolean createGame = true;
-            //Creation de la partie et run
-            for (GameServer game : activeGame) {
-                if (game.getGameName().equals(gameName)) {
-                    createGame = false;
-                    this.clientServer.println("CREATEGAME:KO");
-                }
-            }
-            if (createGame) {
-                GameServer game = new GameServer(messageCreateGame[1]);
-                this.activeGame.add(game);
-                this.clientServer.setGame(game);
-                game.addClient(this.clientServer);
-                System.out.println("activeGame = " + activeGame);
-                this.clientServer.println("CREATEGAME:OK");
-            }
-        }
         else if (message.startsWith("GETCURRENTLISTGAME")) {
             //TODO -> Return la liste des games
             System.out.println("Current game list");
         }
 
         else if (message.startsWith("CREATECONSOLE")) {
+            //System.out.println("message = " + message);
             String[] messageConsole = message.split(":");
             String gameName = messageConsole[1];
-            String maker = messageConsole[2];
+            String constructor = messageConsole[2];
             String year = messageConsole[3];
             String image = messageConsole[4];
 
-            if (bdd.queryCreateConsole(gameName, maker, year, image)) {
+            if (bdd.queryCreateConsole(gameName, constructor, year, image)) {
                 System.out.println("Nouvelle console : " + gameName);
                 this.clientServer.println("CREATECONSOLE:OK");
             } else {

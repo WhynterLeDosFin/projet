@@ -20,7 +20,7 @@
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Button id="validateButton" fx:id="validateButton" layoutX="207.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#backToMenu" text="Valider" />
+      <Button id="validateButton" fx:id="validateButton" layoutX="207.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#onValidateClic" text="Valider" />
       <Button id="selectButton" fx:id="selectButton" layoutX="34.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#onSelectClic" text="Selectionner" />
       <ChoiceBox id="constructorPicker" fx:id="constructorPicker" layoutX="103.0" layoutY="219.0" prefWidth="150.0" />
       <Label layoutX="39.0" layoutY="223.0" text="Frabricant" />

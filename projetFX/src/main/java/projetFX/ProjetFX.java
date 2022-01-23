@@ -16,6 +16,7 @@ import java.net.Socket;
 public class ProjetFX extends Application {
 
     private static Stage currentStage;
+    public static Socket socket;
     private static Socket clientTwo;
     private static ConnectionClientController client = null;
     private static BufferedReader reader;
@@ -48,9 +49,6 @@ public class ProjetFX extends Application {
         out.println("Coucou je suis le client");
         System.out.println("received = " + reader.readLine());*/
 
-
-        Socket socket;
-
         try {
             socket = new Socket(IP, PORT);
             client = new ConnectionClientController(socket);
@@ -68,6 +66,10 @@ public class ProjetFX extends Application {
         ProjetFX.currentStage = stage;
         ProjetFX.setScene(new FirstView());
         stage.show();
+    }
+
+    public Socket getSocket(){
+        return socket;
     }
 
 
