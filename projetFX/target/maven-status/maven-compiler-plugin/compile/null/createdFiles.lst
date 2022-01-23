@@ -15,6 +15,6 @@ projetFX/controller/LoginController.class
 projetFX/view/AddConsoleView.class
 projetFX/view/SelectConsoleView.class
 projetFX/controller/FirstViewController.class
-projetFX/controller/ConsoleController.class
 projetFX/controller/MenuController.class
+projetFX/controller/ConsoleController.class
 projetFX/controller/ConnectionController.class
