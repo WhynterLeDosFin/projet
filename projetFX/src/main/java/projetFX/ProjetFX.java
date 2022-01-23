@@ -21,7 +21,7 @@ public class ProjetFX extends Application {
     private static BufferedReader reader;
     private static PrintWriter out;
     static final String IP = "127.0.0.1";
-    static final int PORT = 8888;
+    static final int PORT = 5000;
 
     public static String readLine() throws IOException {
         return reader.readLine();

@@ -43,12 +43,12 @@ public class ConnectionClientController {
 
         public void connexion(String username, String password) {
             String message = "LOGIN:" + username + ":" + password;
-            System.out.println(message);
+            //System.out.println(message);
             println(message);
         }
 
-        public void inscription(String username, String password) {
-            String message = "CREATEACCOUNT:" + username + ":" + password;
+        public void inscription(String prenom, String nom, String email, String username, String password) {
+            String message = "CREATEACCOUNT:" + prenom + ":" + nom + ":" + email + ":" + username + ":" + password;
             println(message);
         }
 

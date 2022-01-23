@@ -28,7 +28,7 @@
       <Label layoutX="256.0" layoutY="104.0" text="En ligne" />
       <ChoiceBox id="finishPicker" fx:id="finishPicker" layoutX="358.0" layoutY="121.0" prefHeight="26.0" prefWidth="53.0" />
       <Label layoutX="363.0" layoutY="104.0" text="Fini" />
-      <TextField id="buyField" fx:id="buyField" layoutX="41.0" layoutY="227.0" onKeyTyped="#dateFormat" promptText="MM/AAAA" />
+      <TextField id="buyField" fx:id="buyField" layoutX="41.0" layoutY="227.0" promptText="MM/AAAA" />
       <Label layoutX="46.0" layoutY="210.0" text="Date d'achat" />
       <ChoiceBox id="consolePicker" fx:id="consolePicker" layoutX="251.0" layoutY="227.0" prefHeight="26.0" prefWidth="159.0" />
       <Label layoutX="256.0" layoutY="210.0" text="Plateforme" />

@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class ConnectionController implements Initializable {
 
-    private static int DEFAULT_SERVER_PORT = 8888;
+    private static int DEFAULT_SERVER_PORT = 5000;
 
     @FXML
     public Button submitButton;
