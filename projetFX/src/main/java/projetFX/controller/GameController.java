@@ -8,17 +8,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import projetFX.Constructors;
+import org.apache.commons.io.FileUtils;
 import projetFX.ProjetFX;
-import projetFX.view.AddGameView;
 import projetFX.view.TestView;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.ResourceBundle;
+
 
 public class GameController implements Initializable {
 
@@ -75,9 +81,11 @@ public class GameController implements Initializable {
     }
 
     @FXML
-    public void onSelectClic() {
+    public void onSelectClic() throws IOException {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Files", "*.png"));
+        ArrayList list = new ArrayList<String>();
+        list.add("*.png"); list.add("$.jpg"); list.add("$.jpeg");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG, JPEG, JPG Files", list));
         File f = fileChooser.showOpenDialog(null);
 
         if (f != null){
@@ -104,6 +112,18 @@ public class GameController implements Initializable {
         finishPicker.setItems(list);
     }
 
+    public String getEncodedString(String path) throws IOException {
+        byte[] fileContent = FileUtils.readFileToByteArray(new File(path));
+        String encodedString = Base64.getEncoder().encodeToString(fileContent);
+        return encodedString;
+    }
+
+    public Image getDecodedImg(String encodedString) throws IOException {
+        byte[] imageBytes = Base64.getDecoder().decode(encodedString);
+        BufferedImage img = ImageIO.read(new ByteArrayInputStream(imageBytes));
+        Image image = img.getScaledInstance(2, 4, 0);
+        return image;
+    }
     //TODO get editors and consoles from DB --> setPickersItems()
 
 }
