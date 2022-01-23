@@ -70,7 +70,7 @@ public class BddATK {
 
     public boolean queryCreateConsole(String gameName, String constructor, String year, String image) {
         try {
-            PreparedStatement creationConsole = this.connection.prepareStatement("INSERT INTO consoles VALUES (?,?,?,?)");
+            PreparedStatement creationConsole = this.connection.prepareStatement("INSERT INTO consoles (nom,image,annee,fabricant) VALUES (?,?,?,?)");
 
             creationConsole.setString(1, gameName);
             if (!image.isEmpty()) {
@@ -81,8 +81,9 @@ public class BddATK {
             }
             creationConsole.setString(4, constructor);
 
+            System.out.println(creationConsole);
             creationConsole.executeUpdate();
-            System.out.println("creationConsole = " + creationConsole.executeUpdate());
+            //System.out.println("creationConsole = " + creationConsole.executeUpdate());
 
         } catch (SQLException e) {
             return false;
