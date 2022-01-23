@@ -107,10 +107,10 @@ public class SenderThreadATK extends Thread {
             // TODO: check remplissage de year image if null
             String gameName = messageConsole[1];
             String maker = messageConsole[2];
-            String yearString = messageConsole[3];
+            String year = messageConsole[3];
             String image = messageConsole[4];
 
-            if (bdd.queryCreateConsole(gameName, maker, Integer.parseInt(yearString), image)) {
+            if (bdd.queryCreateConsole(gameName, maker, year, image)) {
                 System.out.println("Nouvelle console : " + gameName);
                 this.clientServer.println("CREATECONSOLE:OK");
             } else {
