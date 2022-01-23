@@ -54,14 +54,18 @@ public class BddATK {
         return false;
     }
 
-    public boolean queryInscription(String username, String password) {
+    public boolean queryInscription(String nom, String prenom, String email, String username, String password) {
         try {
-            PreparedStatement inscriptionUser = this.connection.prepareStatement("INSERT INTO users VALUE (?,?)");
+            PreparedStatement inscriptionUser = this.connection.prepareStatement("INSERT INTO users (nom,prenom,email,username,password) VALUES (?,?,?,?,?)");
 
-            inscriptionUser.setString(1, username);
-            inscriptionUser.setString(2, password);
+            inscriptionUser.setString(1, nom);
+            inscriptionUser.setString(2, prenom);
+            inscriptionUser.setString(3, email);
+            inscriptionUser.setString(4, username);
+            inscriptionUser.setString(5, password);
 
-            inscriptionUser.executeUpdate();
+            //System.out.println(inscriptionUser);
+            //System.out.println(inscriptionUser.executeUpdate());
         } catch (SQLException e) {
             return false;
         }

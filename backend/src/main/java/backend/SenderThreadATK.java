@@ -61,11 +61,21 @@ public class SenderThreadATK extends Thread {
 
         }
         else if (message.startsWith("CREATEACCOUNT")) {
+            //System.out.println(message);
             String[] messageInscription = message.split(":");
-            String username = messageInscription[1];
-            String password = messageInscription[2];
 
-            if (bdd.queryInscription(username, password)) {
+            String nom = messageInscription[1];
+            System.out.println("1"+nom);
+            String prenom = messageInscription[2];
+            System.out.println("2"+prenom);
+            String email = messageInscription[3];
+            System.out.println("3"+email);
+            String username = messageInscription[4];
+            System.out.println("4"+username);
+            String password = messageInscription[5];
+            System.out.println("5"+password);
+
+            if (bdd.queryInscription(nom,prenom,email,username, password)) {
                 System.out.println("Nouvelle inscription : " + username);
                 this.clientServer.println("INSCRIPTION:OK");
             } else {

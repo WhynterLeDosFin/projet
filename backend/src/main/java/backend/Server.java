@@ -7,7 +7,7 @@ public class Server {
     public static void main(String[] args) {
         // Simple Echo server
         try {
-            ServerSocket server = new ServerSocket(8888);
+            ServerSocket server = new ServerSocket(5000);
             while (true){
                 var client = server.accept();
                 System.out.printf("New connection from %s%n", client.getRemoteSocketAddress());

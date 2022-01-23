@@ -1,1 +1,9 @@
+backend/CommandServer.class
+backend/ServerATK.class
+backend/BddATK.class
+backend/ClientServerATK.class
+backend/GameServerATK.class
+backend/GameServer.class
+backend/BddExceptionATK.class
 backend/Server.class
+backend/SenderThreadATK.class
