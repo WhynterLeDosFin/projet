@@ -102,9 +102,6 @@ public class SenderThreadATK extends Thread {
 
         else if (message.startsWith("CREATECONSOLE")) {
             String[] messageConsole = message.split(":");
-            System.out.println("new create console");
-            // console --> nom image nullok annee nullok fabricant
-            // TODO: check remplissage de year image if null
             String gameName = messageConsole[1];
             String maker = messageConsole[2];
             String year = messageConsole[3];
