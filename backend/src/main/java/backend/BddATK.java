@@ -68,11 +68,11 @@ public class BddATK {
         return true;
     }
 
-    public boolean queryCreateConsole(String gameName, String constructor, String year, String image) {
+    public boolean queryCreateConsole(String consoleName, String constructor, String year, String image) {
         try {
             PreparedStatement creationConsole = this.connection.prepareStatement("INSERT INTO consoles (nom,image,annee,fabricant) VALUES (?,?,?,?)");
 
-            creationConsole.setString(1, gameName);
+            creationConsole.setString(1, consoleName);
             if (!image.isEmpty()) {
                 creationConsole.setString(2, image);
             }
@@ -83,6 +83,38 @@ public class BddATK {
 
             System.out.println(creationConsole);
             creationConsole.executeUpdate();
+            //System.out.println("creationConsole = " + creationConsole.executeUpdate());
+
+        } catch (SQLException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean queryCreateGame(String gameName, String image, String grade, String year, String nbPlayer, String isOnline, String isFinished, String buyDate, String consoleId, String editorId) {
+        try {
+            PreparedStatement creationGame = this.connection.prepareStatement("INSERT INTO jeux (" +
+                    "nom,image,note,annee,nbJoueur,enLigne,fini,dateAchat,idConsoles,idEditeurs)" +
+                    " VALUES (?,?,?,?,?,?,?,?,?,?)");
+
+            creationGame.setString(1, gameName);
+            if (!image.isEmpty()) {
+                creationGame.setString(2, image);
+            }
+            creationGame.setInt(3, Integer.parseInt(grade));
+            creationGame.setInt(4, Integer.parseInt(year));
+            creationGame.setInt(5, Integer.parseInt(nbPlayer));
+            Boolean bool = isOnline == "Oui" ? true : false;
+            creationGame.setBoolean(6, bool);
+            bool = isFinished == "Oui" ? true : false;
+            creationGame.setBoolean(7, bool);
+            creationGame.setDate(8, Date.valueOf(buyDate));
+            creationGame.setInt(9, Integer.parseInt(consoleId));
+            creationGame.setInt(10, Integer.parseInt(editorId));
+
+
+            System.out.println(creationGame);
+            creationGame.executeUpdate();
             //System.out.println("creationConsole = " + creationConsole.executeUpdate());
 
         } catch (SQLException e) {
