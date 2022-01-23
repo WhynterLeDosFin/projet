@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetFX.controller.FirstViewController">
+   <left>
+      <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-color: #263F70;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label alignment="CENTER" layoutX="3.0" layoutY="131.0" prefHeight="30.0" prefWidth="227.0" text="Game Book" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="3.0" layoutY="170.0" prefHeight="30.0" prefWidth="227.0" text="Gestionnaire de librairie " textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Line endX="100.0" layoutX="116.0" layoutY="169.0" startX="-100.0" stroke="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Label alignment="CENTER" layoutX="3.0" layoutY="356.0" prefHeight="30.0" prefWidth="227.0" text="Copyright ©. Tous droits réservés." textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Ellipse fill="#ffffff00" layoutX="115.0" layoutY="168.0" radiusX="112.0" radiusY="65.0" stroke="#727272" strokeType="INSIDE" />
+            <Circle fill="#e2e6e9" layoutX="51.0" layoutY="115.0" radius="12.0" stroke="#656565" strokeType="INSIDE">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Circle>
+            <Label alignment="CENTER" layoutX="3.0" layoutY="193.0" prefHeight="30.0" prefWidth="227.0" text="de jeux vidéo" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutY="14.0" prefHeight="30.0" prefWidth="290.0" text="Bienvenue sur GameBook" textAlignment="CENTER">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Label>
+            <Button fx:id="chooseConnectionButton" layoutX="31.0" layoutY="98.0" mnemonicParsing="false" onAction="#goToLogin" prefHeight="30.0" prefWidth="228.0" style="-fx-background-color: #263F70;" text="Se connecter " textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button fx:id="chooseRegister" layoutX="31.0" layoutY="201.0" mnemonicParsing="false" onAction="#goToRegister" prefHeight="30.0" prefWidth="228.0" style="-fx-background-color: #263F70;" text="S'inscrire" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button fx:id="cancelButton" layoutX="31.0" layoutY="306.0" mnemonicParsing="false" onAction="#closeGame" prefHeight="30.0" prefWidth="228.0" style="-fx-background-color: #263F70;" text="Quitter" textFill="WHITE">
+            <!--<Button fx:id="cancelButton" layoutX="31.0" layoutY="306.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="30.0" prefWidth="228.0" style="-fx-background-color: #263F70;" text="Quitter" textFill="WHITE"> pourquoi pas ajouter un bouton retour -->
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+         </children></AnchorPane>
+   </center>
+</BorderPane>
