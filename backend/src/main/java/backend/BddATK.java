@@ -6,6 +6,9 @@ public class BddATK {
 
     private Connection connection;
 
+    public String usernameConnected;
+
+
     String url = "jdbc:mysql://54.37.227.110:3306/java_projet";
     String username = "remote_user";
     String password = "rklj234§!@";
@@ -34,6 +37,26 @@ public class BddATK {
         }
     }
 
+    public String getIdUserConnected() {
+        ResultSet resultSetId = null;
+        String userId = null;
+        try {
+
+            PreparedStatement rechercheIdUserConnected = this.connection.prepareStatement("SELECT id FROM users WHERE username = ? ORDER BY id ASC LIMIT 1");
+            rechercheIdUserConnected.setString(1, usernameConnected);
+
+            resultSetId = rechercheIdUserConnected.executeQuery();
+            resultSetId.next();
+            //System.out.println("resultSetId INT LA = " + resultSetId.getString(1));
+            userId = resultSetId.getString(1);
+            System.out.println(userId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return userId;
+    }
+
     public boolean queryConnexion(String username, String password) {
         ResultSet resultSet = null;
 
@@ -44,6 +67,8 @@ public class BddATK {
             recherchePersonne.setString(2, password);
 
             resultSet = recherchePersonne.executeQuery();
+
+            getIdUserConnected();
 
             if (resultSet.isBeforeFirst())
                 return true;
@@ -70,6 +95,7 @@ public class BddATK {
 
     public boolean queryCreateConsole(String consoleName, String constructor, String year, String image) {
         try {
+
             PreparedStatement creationConsole = this.connection.prepareStatement("INSERT INTO consoles (nom,image,annee,fabricant) VALUES (?,?,?,?)");
 
             creationConsole.setString(1, consoleName);
@@ -80,8 +106,9 @@ public class BddATK {
                 creationConsole.setInt(3, Integer.parseInt(year));
             }
             creationConsole.setString(4, constructor);
-
+        /*    System.out.println("user connecté ICI FDP  = " + usernameConnected);
             System.out.println(creationConsole);
+            getIdUserConnected();*/
             creationConsole.executeUpdate();
             //System.out.println("creationConsole = " + creationConsole.executeUpdate());
 
@@ -91,11 +118,12 @@ public class BddATK {
         return true;
     }
 
-    public boolean queryCreateGame(String gameName, String image, String grade, String year, String nbPlayer, String isOnline, String isFinished, String buyDate, String consoleId, String editorId) {
+    public boolean queryCreateGame(String gameName, String image, String grade, String year, String nbPlayer, String isOnline, String isFinished, String buyDate, String consoleId, String editorId, String userId) {
         try {
+
             PreparedStatement creationGame = this.connection.prepareStatement("INSERT INTO jeux (" +
-                    "nom,image,note,annee,nbJoueur,enLigne,fini,dateAchat,idConsoles,idEditeurs)" +
-                    " VALUES (?,?,?,?,?,?,?,?,?,?)");
+                    "nom,image,note,annee,nbJoueur,enLigne,fini,dateAchat,idConsoles,idEditeurs,idUsers)" +
+                    " VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
             creationGame.setString(1, gameName);
             if (!image.isEmpty()) {
@@ -111,6 +139,7 @@ public class BddATK {
             creationGame.setDate(8, Date.valueOf(buyDate));
             creationGame.setInt(9, Integer.parseInt(consoleId));
             creationGame.setInt(10, Integer.parseInt(editorId));
+            creationGame.setInt(11, Integer.parseInt(userId));
 
 
             System.out.println(creationGame);

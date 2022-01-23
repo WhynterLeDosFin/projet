@@ -1,9 +1,7 @@
-/Users/whynter/getmeelo/projet/backend/src/main/java/backend/GameServerATK.java
-/Users/whynter/getmeelo/projet/backend/src/main/java/backend/Server.java
-/Users/whynter/getmeelo/projet/backend/src/main/java/backend/ServerATK.java
-/Users/whynter/getmeelo/projet/backend/src/main/java/backend/CommandServer.java
-/Users/whynter/getmeelo/projet/backend/src/main/java/backend/BddExceptionATK.java
-/Users/whynter/getmeelo/projet/backend/src/main/java/backend/ClientServerATK.java
-/Users/whynter/getmeelo/projet/backend/src/main/java/backend/SenderThreadATK.java
-/Users/whynter/getmeelo/projet/backend/src/main/java/backend/BddATK.java
-/Users/whynter/getmeelo/projet/backend/src/main/java/backend/GameServer.java
+/home/arthur/Documents/projet/backend/src/main/java/backend/BddExceptionATK.java
+/home/arthur/Documents/projet/backend/src/main/java/backend/Server.java
+/home/arthur/Documents/projet/backend/src/main/java/backend/CommandServer.java
+/home/arthur/Documents/projet/backend/src/main/java/backend/ClientServerATK.java
+/home/arthur/Documents/projet/backend/src/main/java/backend/SenderThreadATK.java
+/home/arthur/Documents/projet/backend/src/main/java/backend/BddATK.java
+/home/arthur/Documents/projet/backend/src/main/java/backend/ServerATK.java

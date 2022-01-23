@@ -1,9 +1,18 @@
 package backend;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class SenderThreadATK extends Thread {
+
+    public static String usernameConnected;
+
+    public void setUsernameConnected(){
+        bdd.usernameConnected=usernameConnected;
+
+        //return usernameConnected;
+    }
 
     private ClientServerATK clientServer;
     private BddATK bdd;
@@ -27,11 +36,16 @@ public class SenderThreadATK extends Thread {
         }
     }
 
-    public void handleLine(String message) {
+    public void handleLine(String message) throws IOException {
          if (message.startsWith("LOGIN")) {  //LOGIN:USERNAME:PASSWORD
             String[] messageConnexion = message.split(":");
             String username = messageConnexion[1];
+            usernameConnected = username;
+
+            System.out.println("username LA LA LA = " + username);
             String password = messageConnexion[2];
+
+            setUsernameConnected();
 
             if (bdd.queryConnexion(username, password)) {
                 System.out.println("Connexion OK");
