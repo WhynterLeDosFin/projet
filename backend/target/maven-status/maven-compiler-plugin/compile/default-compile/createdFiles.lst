@@ -1,1 +1,9 @@
-backend/Server.class
+backend\BddATK.class
+backend\CommandServer.class
+backend\ClientServerATK.class
+backend\GameServerATK.class
+backend\SenderThreadATK.class
+backend\BddExceptionATK.class
+backend\GameServer.class
+backend\Server.class
+backend\ServerATK.class

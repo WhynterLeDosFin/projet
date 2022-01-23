@@ -99,6 +99,11 @@ public class SenderThreadATK extends Thread {
             //TODO -> Return la liste des games
             System.out.println("Current game list");
         }
+
+        else if (message.startsWith("CREATECONSOLE")) {
+            String[] messageConsole = message.split(":");
+            System.out.println("new create console");
+        }
         else {
             System.out.println("message = " + message);
         }
