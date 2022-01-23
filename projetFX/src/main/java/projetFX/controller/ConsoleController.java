@@ -9,12 +9,19 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import org.apache.commons.io.FileUtils;
 import projetFX.Constructors;
 import projetFX.ProjetFX;
 import projetFX.view.TestView;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Base64;
 import java.util.ResourceBundle;
 
 public class ConsoleController implements Initializable {
@@ -69,5 +76,19 @@ public class ConsoleController implements Initializable {
                 Constructors.Commodore, Constructors.Microsoft, Constructors.NEC, Constructors.Nokia, Constructors.SEGA,
                 Constructors.VTech, Constructors.SNK, Constructors.Philips, Constructors.Casio);
         constructorPicker.setItems(list);
+    }
+
+
+    public String getEncodedString(String path) throws IOException {
+        byte[] fileContent = FileUtils.readFileToByteArray(new File(path));
+        String encodedString = Base64.getEncoder().encodeToString(fileContent);
+        return encodedString;
+    }
+
+    public Image getDecodedImg(String encodedString) throws IOException {
+        byte[] imageBytes = Base64.getDecoder().decode(encodedString);
+        BufferedImage img = ImageIO.read(new ByteArrayInputStream(imageBytes));
+        Image image = img.getScaledInstance(2, 4, 0);
+        return image;
     }
 }

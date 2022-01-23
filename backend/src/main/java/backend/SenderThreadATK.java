@@ -95,10 +95,6 @@ public class SenderThreadATK extends Thread {
                 this.clientServer.println("CREATEGAME:OK");
             }
         }
-        else if (message.startsWith("GETCURRENTLISTGAME")) {
-            //TODO -> Return la liste des games
-            System.out.println("Current game list");
-        }
         else {
             System.out.println("message = " + message);
         }
