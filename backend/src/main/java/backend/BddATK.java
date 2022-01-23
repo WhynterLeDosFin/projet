@@ -73,9 +73,9 @@ public class BddATK {
             PreparedStatement creationConsole = this.connection.prepareStatement("INSERT INTO consoles VALUE (?,?,?,?)");
 
             creationConsole.setString(1, gameName);
-            creationConsole.setString(2, maker);
+            creationConsole.setString(2, image);
             creationConsole.setInt(3, year);
-            creationConsole.setString(4, image);
+            creationConsole.setString(4, maker);
 
             creationConsole.executeUpdate();
         } catch (SQLException e) {
