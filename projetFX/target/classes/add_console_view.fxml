@@ -25,5 +25,15 @@
       <ChoiceBox id="constructorPicker" fx:id="constructorPicker" layoutX="103.0" layoutY="219.0" prefWidth="150.0" />
       <Label layoutX="39.0" layoutY="223.0" text="Frabricant" />
       <Label layoutX="154.0" layoutY="126.0" text="Logo" />
+      <Label id="successLabel" fx:id="successLabel" layoutX="321.0" layoutY="222.0" text="SUCCESS" textFill="#55ff00" visible="false">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </Label>
+      <Label id="errorLabel" fx:id="errorLabel" layoutX="330.0" layoutY="222.0" text="ERROR" textFill="RED" visible="false">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

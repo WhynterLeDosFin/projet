@@ -53,6 +53,8 @@ public class ProjetFX extends Application {
             socket = new Socket(IP, PORT);
             client = new ConnectionClientController(socket);
             client.uuid();
+            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
         } catch (IOException e) {
             System.out.println("Serveur eteint");
             e.printStackTrace();

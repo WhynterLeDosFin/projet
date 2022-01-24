@@ -13,6 +13,7 @@ projetFX/ProjetFX.class
 projetFX/Constructors.class
 projetFX/controller/LoginController.class
 projetFX/view/AddConsoleView.class
+projetFX/exception/DisconnectedException.class
 projetFX/view/SelectConsoleView.class
 projetFX/controller/FirstViewController.class
 projetFX/controller/ConsoleController.class

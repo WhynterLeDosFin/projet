@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
 import projetFX.Constructors;
@@ -60,6 +61,12 @@ public class ConsoleController implements Initializable {
     public TextField yearField;
 
     @FXML
+    public Label successLabel;
+
+    @FXML
+    public Label errroLabel;
+
+    @FXML
     public ChoiceBox<Constructors> constructorPicker;
 
     //select part. --------------------------------------------------------------------------------
@@ -89,6 +96,12 @@ public class ConsoleController implements Initializable {
                 String.valueOf(this.constructorPicker.getValue()),
                 this.yearField.getText(),
                 getEncodedString(this.dragDropLabel.getText()));
+        String line = ProjetFX.readLine();
+        if (line.startsWith("CREATECONSOLE:OK")) {
+            this.successLabel.setVisible(true);
+        } else {
+            this.errroLabel.setVisible(true);
+        }
     }
 
     @FXML

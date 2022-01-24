@@ -27,8 +27,6 @@ import java.util.ResourceBundle;
 public class GameController implements Initializable {
 
     private Socket socket;
-    private BufferedReader in;
-    private PrintWriter out;
     private ConnectionClientController connectionClientController;
 
     @Override
@@ -37,10 +35,8 @@ public class GameController implements Initializable {
 
         // SETTING Editor Picker Values.
         try {
-            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new PrintWriter(socket.getOutputStream(), true);
-            out.println("SELECTEDITOR");
-            var line = in.readLine();
+            ProjetFX.println("SELECTEDITOR");
+            var line = ProjetFX.readLine();
             var splittedLine = line.split(",");
             var editors = new ArrayList<>(Arrays.asList(splittedLine));
             ObservableList<String> list = FXCollections.observableArrayList(editors);
@@ -52,8 +48,8 @@ public class GameController implements Initializable {
 
         // SETTING Console Picker Values.
         try {
-            out.println("SELECTCONSOLE");
-            var line = in.readLine();
+            ProjetFX.println("SELECTCONSOLE");
+            var line = ProjetFX.readLine();
             var splittedLine = line.split(",");
             var editors = new ArrayList<>(Arrays.asList(splittedLine));
             ObservableList<String> list = FXCollections.observableArrayList(editors);

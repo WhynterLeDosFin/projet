@@ -1,7 +1,7 @@
 backend/CommandServer.class
 backend/ServerATK.class
-backend/BddATK.class
 backend/ClientServerATK.class
+backend/BddATK.class
 backend/BddExceptionATK.class
-backend/Server.class
 backend/SenderThreadATK.class
+backend/Server.class
