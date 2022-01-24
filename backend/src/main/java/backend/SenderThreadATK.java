@@ -31,7 +31,8 @@ public class SenderThreadATK extends Thread {
             while (true) {
                 var line = this.clientServer.readLine();
                 System.out.println("line = " + line);
-                handleLine(line);
+                if( line != null ) handleLine(line);
+                else throw new IOException();
             }
         } catch (IOException e) {
             //disconnect
@@ -117,10 +118,8 @@ public class SenderThreadATK extends Thread {
             }
         }
         else if (message.startsWith("SELECTEDITOR")) {
-             List<String> toSend = new ArrayList<>();
-             bdd.getEditor();
-             toSend.add("oe");toSend.add("oeeee");toSend.add("eeeeeoe");toSend.add("oeeee");toSend.add("oeeeeeee");
-             clientServer.println(toSend.stream().collect(Collectors.joining(",")));
+             var res = bdd.queryGetEditor();
+             clientServer.println(res);
          }
         else {
             System.out.println("message = " + message);

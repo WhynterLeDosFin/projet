@@ -1,6 +1,9 @@
 package backend;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BddATK {
 
@@ -152,31 +155,25 @@ public class BddATK {
         }
         return true;
     }
-    public Integer getEditor() {
+    public String queryGetEditor() {
         ResultSet resultEditor = null;
         Integer toto = null;
         try {
 
             PreparedStatement rechercheEditor = this.connection.prepareStatement("SELECT nom FROM editeurs ORDER BY nom ASC");
-
+            List<String> names = new ArrayList<>();
             resultEditor = rechercheEditor.executeQuery();
-            resultEditor.next();
-            System.out.println("resultEditor.getString(1) = " + resultEditor.getString(1));
-            System.out.println("resultEditor.getString(2) = " + resultEditor.getString(2));
-            System.out.println("resultEditor.getString(3) = " + resultEditor.getString(3));
-            resultEditor.next();
-            System.out.println("nextiiiiiiiingaaaaa");
-            System.out.println("resultEditor.getString(1) = " + resultEditor.getString(1));
-            System.out.println("resultEditor.getString(2) = " + resultEditor.getString(2));
-            System.out.println("resultEditor.getString(3) = " + resultEditor.getString(3));
-
+            while(resultEditor.next())
+                names.add(resultEditor.getString("nom"));
+            return String.join(",", names);
             //System.out.println("resultSetId INT LA = " + resultSetId.getString(1));
-            toto = resultEditor.getInt(1);
-            System.out.println(toto);
+            //toto = resultEditor.getInt(1);
+            //System.out.println(toto);
         } catch (SQLException e) {
             e.printStackTrace();
 
         }
-        return toto;
+        return null;
+        //return toto;
     }
 }

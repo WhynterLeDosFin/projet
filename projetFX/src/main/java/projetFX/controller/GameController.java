@@ -21,8 +21,10 @@ import java.io.*;
 import java.net.Socket;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 
 public class GameController implements Initializable {
@@ -34,13 +36,17 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("GameController.initialize ON Y EEEEEST");
         socket = ProjetFX.socket;
         try {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            out = new PrintWriter(socket.getOutputStream());
+            out = new PrintWriter(socket.getOutputStream(), true);
             out.println("SELECTEDITOR");
             var line = in.readLine();
-            System.out.println("line = " + line);
+            var splittedLine = line.split(",");
+            var editors = new ArrayList<>(Arrays.asList(splittedLine));
+            ObservableList<String> list = FXCollections.observableArrayList(editors);
+            editorPicker.setItems(list);
         } catch (IOException e) {
             e.printStackTrace();
         }
