@@ -17,9 +17,7 @@ import projetFX.view.TestView;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,13 +28,23 @@ import java.util.ResourceBundle;
 public class GameController implements Initializable {
 
     private Socket socket;
+    private BufferedReader in;
+    private PrintWriter out;
     private ConnectionClientController connectionClientController;
 
-
-
-     @Override
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         socket = ProjetFX.socket;
+        try {
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream());
+            out.println("SELECTEDITOR");
+            var line = in.readLine();
+            System.out.println("line = " + line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         setGradePickerItems();
         setPlayerNbPickerItems();
         setOnlineAndFinishPickerItems();

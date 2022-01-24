@@ -3,6 +3,9 @@ package backend;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SenderThreadATK extends Thread {
 
@@ -75,11 +78,6 @@ public class SenderThreadATK extends Thread {
                 this.clientServer.println("INSCRIPTION:KO");
             }
         }
-        else if (message.startsWith("GETCURRENTLISTGAME")) {
-            //TODO -> Return la liste des games
-            System.out.println("Current game list");
-        }
-
         else if (message.startsWith("CREATECONSOLE")) {
             //System.out.println("message = " + message);
             String[] messageConsole = message.split(":");
@@ -118,6 +116,12 @@ public class SenderThreadATK extends Thread {
                 this.clientServer.println("CREATEGAME:KO");
             }
         }
+        else if (message.startsWith("SELECTEDITOR")) {
+             List<String> toSend = new ArrayList<>();
+             bdd.getEditor();
+             toSend.add("oe");toSend.add("oeeee");toSend.add("eeeeeoe");toSend.add("oeeee");toSend.add("oeeeeeee");
+             clientServer.println(toSend.stream().collect(Collectors.joining(",")));
+         }
         else {
             System.out.println("message = " + message);
         }

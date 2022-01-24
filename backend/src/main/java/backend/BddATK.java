@@ -152,4 +152,31 @@ public class BddATK {
         }
         return true;
     }
+    public Integer getEditor() {
+        ResultSet resultEditor = null;
+        Integer toto = null;
+        try {
+
+            PreparedStatement rechercheEditor = this.connection.prepareStatement("SELECT nom FROM editeurs ORDER BY nom ASC");
+
+            resultEditor = rechercheEditor.executeQuery();
+            resultEditor.next();
+            System.out.println("resultEditor.getString(1) = " + resultEditor.getString(1));
+            System.out.println("resultEditor.getString(2) = " + resultEditor.getString(2));
+            System.out.println("resultEditor.getString(3) = " + resultEditor.getString(3));
+            resultEditor.next();
+            System.out.println("nextiiiiiiiingaaaaa");
+            System.out.println("resultEditor.getString(1) = " + resultEditor.getString(1));
+            System.out.println("resultEditor.getString(2) = " + resultEditor.getString(2));
+            System.out.println("resultEditor.getString(3) = " + resultEditor.getString(3));
+
+            //System.out.println("resultSetId INT LA = " + resultSetId.getString(1));
+            toto = resultEditor.getInt(1);
+            System.out.println(toto);
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return toto;
+    }
 }

@@ -40,7 +40,6 @@ public class ConsoleController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
@@ -82,7 +81,6 @@ public class ConsoleController implements Initializable {
             dragDropLabel.setText(f.getAbsolutePath());
         }
     }
-
 
     @FXML
     public void onValidateClic() throws IOException {
