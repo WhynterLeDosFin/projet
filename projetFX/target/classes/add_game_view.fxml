@@ -34,5 +34,6 @@
       <Label layoutX="256.0" layoutY="210.0" text="Plateforme" />
       <ChoiceBox id="editorPicker" fx:id="editorPicker" layoutX="147.0" layoutY="277.0" prefHeight="26.0" prefWidth="159.0" />
       <Label layoutX="152.0" layoutY="260.0" text="Editeurs" />
+      <Button id="validateButton" fx:id="validateButton" layoutX="363.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#onValidateClick" text="Valider" />
    </children>
 </Pane>

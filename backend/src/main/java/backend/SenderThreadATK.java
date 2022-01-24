@@ -96,6 +96,28 @@ public class SenderThreadATK extends Thread {
                 this.clientServer.println("CREATECONSOLE:KO");
             }
         }
+        else if (message.startsWith("CREATEGAME")) {
+            //System.out.println("message = " + message);
+            String[] messageConsole = message.split(":");
+            String gameName = messageConsole[1];
+            String image = messageConsole[2];
+            String grade = messageConsole[3];
+            String year = messageConsole[4];
+            String nbPlayer = messageConsole[5];
+            String isOnline = messageConsole[6];
+            String isFinished = messageConsole[7];
+            String buyDate = messageConsole[8];
+            String consoleId = messageConsole[9];
+            String editorId = messageConsole[10];
+
+            if (bdd.queryCreateGame(gameName, image, grade, year, nbPlayer, isOnline, isFinished, buyDate, consoleId, editorId)) {
+                System.out.println("Nouveau jeu : " + gameName);
+                this.clientServer.println("CREATEGAME:OK");
+            } else {
+                System.out.println("ERROR creation console : " + gameName);
+                this.clientServer.println("CREATEGAME:KO");
+            }
+        }
         else {
             System.out.println("message = " + message);
         }

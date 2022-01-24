@@ -37,9 +37,9 @@ public class BddATK {
         }
     }
 
-    public String getIdUserConnected() {
+    public Integer getUserIdConnected() {
         ResultSet resultSetId = null;
-        String userId = null;
+        Integer userId = null;
         try {
 
             PreparedStatement rechercheIdUserConnected = this.connection.prepareStatement("SELECT id FROM users WHERE username = ? ORDER BY id ASC LIMIT 1");
@@ -48,7 +48,7 @@ public class BddATK {
             resultSetId = rechercheIdUserConnected.executeQuery();
             resultSetId.next();
             //System.out.println("resultSetId INT LA = " + resultSetId.getString(1));
-            userId = resultSetId.getString(1);
+            userId = resultSetId.getInt(1);
             System.out.println(userId);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -68,7 +68,7 @@ public class BddATK {
 
             resultSet = recherchePersonne.executeQuery();
 
-            getIdUserConnected();
+            getUserIdConnected();
 
             if (resultSet.isBeforeFirst())
                 return true;
@@ -118,7 +118,7 @@ public class BddATK {
         return true;
     }
 
-    public boolean queryCreateGame(String gameName, String image, String grade, String year, String nbPlayer, String isOnline, String isFinished, String buyDate, String consoleId, String editorId, String userId) {
+    public boolean queryCreateGame(String gameName, String image, String grade, String year, String nbPlayer, String isOnline, String isFinished, String buyDate, String consoleId, String editorId) {
         try {
 
             PreparedStatement creationGame = this.connection.prepareStatement("INSERT INTO jeux (" +
@@ -139,7 +139,8 @@ public class BddATK {
             creationGame.setDate(8, Date.valueOf(buyDate));
             creationGame.setInt(9, Integer.parseInt(consoleId));
             creationGame.setInt(10, Integer.parseInt(editorId));
-            creationGame.setInt(11, Integer.parseInt(userId));
+            //creationGame.setInt(11, Integer.parseInt(userId));
+            creationGame.setInt(11, getUserIdConnected());
 
 
             System.out.println(creationGame);

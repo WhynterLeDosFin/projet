@@ -20,6 +20,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.Socket;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -28,11 +29,23 @@ import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
 
-    @Override
+    private Socket socket;
+    private ConnectionClientController connectionClientController;
+
+
+
+     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        socket = ProjetFX.socket;
         setGradePickerItems();
         setPlayerNbPickerItems();
         setOnlineAndFinishPickerItems();
+        try {
+            connectionClientController = new ConnectionClientController(socket);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
@@ -54,6 +67,9 @@ public class GameController implements Initializable {
 
     @FXML
     public Button selectButton;
+
+    @FXML
+    public Button validateButton;
 
     @FXML
     public ChoiceBox gradePicker;
@@ -91,6 +107,21 @@ public class GameController implements Initializable {
         if (f != null){
             dragDropLabel.setText(f.getAbsolutePath());
         }
+    }
+
+    @FXML
+    public void onValidateClick() throws IOException {
+        connectionClientController.createGame(
+                this.nameField.getText(),
+                getEncodedString(this.dragDropLabel.getText()),
+                String.valueOf(this.gradePicker.getValue()),
+                this.yearField.getText(),
+                String.valueOf(this.playerNbPicker.getValue()),
+                String.valueOf(this.onlinePicker.getValue()),
+                String.valueOf(this.finishPicker.getValue()),
+                this.buyField.getText(),
+                String.valueOf(this.consolePicker.getValue()),
+                String.valueOf(this.editorPicker.getValue()));
     }
 
     @FXML
