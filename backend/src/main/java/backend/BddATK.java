@@ -157,23 +157,31 @@ public class BddATK {
     }
     public String queryGetEditor() {
         ResultSet resultEditor = null;
-        Integer toto = null;
         try {
-
             PreparedStatement rechercheEditor = this.connection.prepareStatement("SELECT nom FROM editeurs ORDER BY nom ASC");
             List<String> names = new ArrayList<>();
             resultEditor = rechercheEditor.executeQuery();
             while(resultEditor.next())
                 names.add(resultEditor.getString("nom"));
             return String.join(",", names);
-            //System.out.println("resultSetId INT LA = " + resultSetId.getString(1));
-            //toto = resultEditor.getInt(1);
-            //System.out.println(toto);
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
         return null;
-        //return toto;
     }
+    public String queryGetConsole() {
+        ResultSet resultConsole = null;
+        try {
+            PreparedStatement rechercheConsole = this.connection.prepareStatement("SELECT nom FROM consoles ORDER BY nom ASC");
+            List<String> names = new ArrayList<>();
+            resultConsole = rechercheConsole.executeQuery();
+            while(resultConsole.next())
+                names.add(resultConsole.getString("nom"));
+            return String.join(",", names);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

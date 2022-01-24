@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
 import projetFX.ProjetFX;
@@ -24,8 +23,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
-
 
 public class GameController implements Initializable {
 
@@ -36,8 +33,9 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("GameController.initialize ON Y EEEEEST");
         socket = ProjetFX.socket;
+
+        // SETTING Editor Picker Values.
         try {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
@@ -48,18 +46,34 @@ public class GameController implements Initializable {
             ObservableList<String> list = FXCollections.observableArrayList(editors);
             editorPicker.setItems(list);
         } catch (IOException e) {
+            System.out.println("ERROR DURING GETTING EDITORS");
             e.printStackTrace();
         }
 
+        // SETTING Console Picker Values.
+        try {
+            out.println("SELECTCONSOLE");
+            var line = in.readLine();
+            var splittedLine = line.split(",");
+            var editors = new ArrayList<>(Arrays.asList(splittedLine));
+            ObservableList<String> list = FXCollections.observableArrayList(editors);
+            consolePicker.setItems(list);
+        } catch (IOException e) {
+            System.out.println("ERROR DURING GETTING CONSOLES");
+            e.printStackTrace();
+        }
+
+        // SETTING Other Pickers Values.
         setGradePickerItems();
         setPlayerNbPickerItems();
         setOnlineAndFinishPickerItems();
+
+
         try {
             connectionClientController = new ConnectionClientController(socket);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
@@ -169,6 +183,4 @@ public class GameController implements Initializable {
         Image image = img.getScaledInstance(2, 4, 0);
         return image;
     }
-    //TODO get editors and consoles from DB --> setPickersItems()
-
 }

@@ -121,6 +121,10 @@ public class SenderThreadATK extends Thread {
              var res = bdd.queryGetEditor();
              clientServer.println(res);
          }
+        else if (message.startsWith("SELECTCONSOLE")) {
+             var res = bdd.queryGetConsole();
+             clientServer.println(res);
+         }
         else {
             System.out.println("message = " + message);
         }
