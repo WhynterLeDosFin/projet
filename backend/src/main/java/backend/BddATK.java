@@ -125,9 +125,9 @@ public class BddATK {
         try {
 
             PreparedStatement creationGame = this.connection.prepareStatement("INSERT INTO jeux (" +
-                    "nom,image,note,annee,nbJoueur,enLigne,fini,dateAchat,idConsoles,idEditeurs,idUsers)" +
+                    "nom,image,note,annee,nbJoueur,enLigne,fini,dateAchat,nomConsoles,nomEditeurs,username)" +
                     " VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-
+            System.out.println("AvantBordel");
             creationGame.setString(1, gameName);
             if (!image.isEmpty()) {
                 creationGame.setString(2, image);
@@ -139,18 +139,20 @@ public class BddATK {
             creationGame.setBoolean(6, bool);
             bool = isFinished == "Oui" ? true : false;
             creationGame.setBoolean(7, bool);
-            creationGame.setDate(8, Date.valueOf(buyDate));
-            creationGame.setInt(9, Integer.parseInt(consoleId));
-            creationGame.setInt(10, Integer.parseInt(editorId));
+            System.out.println("AvantDateSet");
+            creationGame.setString(8, buyDate);
+            creationGame.setString(9, consoleId);
+            creationGame.setString(10, editorId);
             //creationGame.setInt(11, Integer.parseInt(userId));
-            creationGame.setInt(11, getUserIdConnected());
-
-
+            creationGame.setString(11, usernameConnected);
+            System.out.println("AvantGetUserIdCo");
+            System.out.println("getUserIdConnected() = " + getUserIdConnected());
             System.out.println(creationGame);
             creationGame.executeUpdate();
             //System.out.println("creationConsole = " + creationConsole.executeUpdate());
 
         } catch (SQLException e) {
+            e.printStackTrace();
             return false;
         }
         return true;

@@ -99,6 +99,7 @@ public class ConsoleController implements Initializable {
         String line = ProjetFX.readLine();
         if (line.startsWith("CREATECONSOLE:OK")) {
             this.successLabel.setVisible(true);
+            //emptyingForm();
         } else {
             this.errroLabel.setVisible(true);
         }
@@ -112,7 +113,6 @@ public class ConsoleController implements Initializable {
                 Constructors.VTech, Constructors.SNK, Constructors.Philips, Constructors.Casio);
         constructorPicker.setItems(list);
     }
-
 
     public String getEncodedString(String path) throws IOException {
         byte[] fileContent = FileUtils.readFileToByteArray(new File(path));

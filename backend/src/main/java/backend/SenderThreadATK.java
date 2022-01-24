@@ -96,18 +96,18 @@ public class SenderThreadATK extends Thread {
             }
         }
         else if (message.startsWith("CREATEGAME")) {
-            //System.out.println("message = " + message);
-            String[] messageConsole = message.split(":");
-            String gameName = messageConsole[1];
-            String image = messageConsole[2];
-            String grade = messageConsole[3];
-            String year = messageConsole[4];
-            String nbPlayer = messageConsole[5];
-            String isOnline = messageConsole[6];
-            String isFinished = messageConsole[7];
-            String buyDate = messageConsole[8];
-            String consoleId = messageConsole[9];
-            String editorId = messageConsole[10];
+            System.out.println("message from SenderThread side = " + message);
+            String[] messageGame = message.split(":");
+            String gameName = messageGame[1];
+            String image = messageGame[2];
+            String grade = messageGame[3];
+            String year = messageGame[4];
+            String nbPlayer = messageGame[5];
+            String isOnline = messageGame[6];
+            String isFinished = messageGame[7];
+            String buyDate = messageGame[8];
+            String consoleId = messageGame[9];
+            String editorId = messageGame[10];
 
             if (bdd.queryCreateGame(gameName, image, grade, year, nbPlayer, isOnline, isFinished, buyDate, consoleId, editorId)) {
                 System.out.println("Nouveau jeu : " + gameName);

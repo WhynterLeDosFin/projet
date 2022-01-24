@@ -68,7 +68,7 @@ public class ConnectionClientController {
         }
 
     public void createGame(String gameName, String image, String grade, String year, String nbPlayer, String isOnline, String isFinished, String buyDate, String consoleId, String editorId) {
-        String message = "CREATECONSOLE:"+gameName+":"+image+":"+grade+":"+year+":"+nbPlayer+":"+isOnline+":"+isFinished+":"+buyDate+":"+consoleId+":"+editorId;
+        String message = "CREATEGAME:"+gameName+":"+image+":"+grade+":"+year+":"+nbPlayer+":"+isOnline+":"+isFinished+":"+buyDate+":"+consoleId+":"+editorId;
         println(message);
     }
     }
