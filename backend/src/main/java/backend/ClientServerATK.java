@@ -19,7 +19,6 @@ public class ClientServerATK {
         this.socket = socket;
         reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         writer = new PrintWriter(socket.getOutputStream(), true);
-        System.out.println("activeClient = " + activeClient);
     }
 
     // !! WARNING !! if IOException -> disconnect
@@ -27,9 +26,6 @@ public class ClientServerATK {
         var line = this.reader.readLine();
         return line;
     }
-
-    /**************************/
-
 
     public String getUsernameFromBdd() {
         return usernameFromBdd;
@@ -39,7 +35,7 @@ public class ClientServerATK {
         this.usernameFromBdd = usernameFromBdd;
     }
 
-    //Permet l'envoie d'un message
+    //autorise l'envoi d'un message au serveur
     public void println(String message){
         this.writer.println(message);
     }

@@ -33,8 +33,7 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField passwordPasswordField;
 
-    //TODO A MOI
-    private static int DEFAULT_SERVER_PORT = 8888;
+    private static int DEFAULT_SERVER_PORT = 5555;
 
     @FXML
     public Button submitButton;
@@ -62,69 +61,15 @@ public class LoginController implements Initializable {
         ProjetFX.setScene(new MenuView());
     }
 
-    /*public void loginButtonOnAction(ActionEvent e){
-
-        if (!usernameTextField.getText().isBlank() && !passwordPasswordField.getText().isBlank()){
-            //loginMessageLabel.setText("Essai de connexion..."); // Ajoute une phrase lors de la tentative de connexion sur l'UI si et seulement si, des informations sont rentrées dans les champs
-            validateLogin();
-        } else {
-            loginMessageLabel.setText("Entrez vos informations de connexion.");
-        }
-    }*/
-
-    public void returnButtonOnAction(ActionEvent e){ // Fct qui permet de close l'application, pouvant se passer de la windows top bar
+    public void returnButtonOnAction(ActionEvent e){ // Fct qui permet de close l'application
         ProjetFX.setScene(new FirstView());
     }
-
-    public void validateLogin(){
-        //DBConnection connectNow = new DBConnection();
-        //Connection connectDB = connectNow.getConnection();
-
-        String verifyLogin = "SELECT count(1) FROM Users WHERE username = '" + usernameTextField.getText() + "' AND password = '" + passwordPasswordField.getText() + "'";
-
-        //TODO C A MOI CA
-
-        System.out.println("Connection en cours");
-        var host = "127.0.0.1";
-        try{
-            this.client = new Socket(host, DEFAULT_SERVER_PORT);
-            ProjetFX.setClient(client);
-            ProjetFX.setScene(new MenuView());
-        }catch(IOException e){
-            errorMessage.setVisible(true);
-        }
-
-        //TODO C PU A MOI CA
-
-        /*try {
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
-
-            while(queryResult.next()){
-                if(queryResult.getInt(1) == 1){
-                    loginMessageLabel.setText("Succès !");
-                }
-                else {
-                    loginMessageLabel.setText("Identifiants invalides.");
-                }
-            }
-
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
-
-    }
-
 
     public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
         Stage primaryStage = (Stage)usernameTextField.getScene().getWindow();
         primaryStage.setResizable(false);
 
         if(usernameTextField.getText() != "" && passwordPasswordField.getText() != "") {
-            System.out.println(usernameTextField.getText());
-            System.out.println(passwordPasswordField.getText());
             connectionClient = new ConnectionClientController(new Socket("127.0.0.1", DEFAULT_SERVER_PORT));
             connectionClient.connexion(usernameTextField.getText(), passwordPasswordField.getText());
             boolean isConnected = false;

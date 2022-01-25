@@ -5,17 +5,14 @@ projetFX/view/FirstView.class
 projetFX/view/ConnectionView.class
 projetFX/controller/ConnectionClientController.class
 projetFX/controller/GameController.class
-projetFX/controller/AppController.class
 projetFX/view/SelectGameView.class
 projetFX/view/RegisterView.class
 projetFX/ProjetFX.class
 projetFX/Constructors.class
 projetFX/controller/LoginController.class
 projetFX/view/AddConsoleView.class
-projetFX/exception/DisconnectedException.class
 projetFX/view/SelectConsoleView.class
 projetFX/controller/FirstViewController.class
 projetFX/controller/MenuController.class
 projetFX/controller/ConsoleController.class
-projetFX/controller/ConnectionController.class
 projetFX/view/MenuView.class

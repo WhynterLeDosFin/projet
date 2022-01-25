@@ -1,7 +1,6 @@
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/view/FirstView.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/view/MenuView.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/Constructors.java
-/home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/exception/DisconnectedException.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/controller/LoginController.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/controller/ConnectionClientController.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/view/SelectConsoleView.java
@@ -9,10 +8,8 @@
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/view/RegisterView.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/view/View.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/view/ConnectionView.java
-/home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/controller/ConnectionController.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/view/SelectGameView.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/controller/RegisterController.java
-/home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/controller/AppController.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/view/AddGameView.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/controller/GameController.java
 /home/arthur/Documents/projet-0027/projet/projetFX/src/main/java/projetFX/controller/FirstViewController.java

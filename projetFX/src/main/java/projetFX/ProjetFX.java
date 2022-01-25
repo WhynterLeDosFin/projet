@@ -22,7 +22,7 @@ public class ProjetFX extends Application {
     private static BufferedReader reader;
     private static PrintWriter out;
     static final String IP = "127.0.0.1";
-    static final int PORT = 8888;
+    static final int PORT = 5555;
 
     public static String readLine() throws IOException {
         return reader.readLine();
@@ -43,13 +43,7 @@ public class ProjetFX extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-        /*Socket connection = new Socket("localhost", 8888);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-        PrintWriter out = new PrintWriter(connection.getOutputStream(), true);
-        out.println("Coucou je suis le client");
-        System.out.println("received = " + reader.readLine());*/
-
-        try {
+          try {
             socket = new Socket(IP, PORT);
             client = new ConnectionClientController(socket);
             client.uuid();
@@ -58,7 +52,6 @@ public class ProjetFX extends Application {
         } catch (IOException e) {
             System.out.println("Serveur eteint");
             e.printStackTrace();
-            //TODO -> Afficher une fenetre erreur avec le message serveur eteint
             System.exit(0);
         }
 

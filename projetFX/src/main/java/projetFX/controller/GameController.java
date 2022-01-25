@@ -33,7 +33,6 @@ public class GameController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         socket = ProjetFX.socket;
 
-        // SETTING Editor Picker Values.
         try {
             ProjetFX.println("SELECTEDITOR");
             var line = ProjetFX.readLine();
@@ -46,7 +45,6 @@ public class GameController implements Initializable {
             e.printStackTrace();
         }
 
-        // SETTING Console Picker Values.
         try {
             ProjetFX.println("SELECTCONSOLE");
             var line = ProjetFX.readLine();
@@ -58,8 +56,6 @@ public class GameController implements Initializable {
             System.out.println("ERROR DURING GETTING CONSOLES");
             e.printStackTrace();
         }
-
-        // SETTING Other Pickers Values.
         setGradePickerItems();
         setPlayerNbPickerItems();
         setOnlineAndFinishPickerItems();
@@ -74,8 +70,6 @@ public class GameController implements Initializable {
 
     @FXML
     public Button backButton;
-
-    //adding part. --------------------------------------------------------------------------------
 
     @FXML
     public TextField nameField;
@@ -118,8 +112,6 @@ public class GameController implements Initializable {
 
     @FXML
     public ChoiceBox editorPicker;
-
-    //select part. --------------------------------------------------------------------------------
 
     @FXML
     public void backToMenu(){

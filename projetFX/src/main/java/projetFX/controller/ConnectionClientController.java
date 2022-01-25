@@ -19,23 +19,14 @@ public class ConnectionClientController {
             writer = new PrintWriter(socket.getOutputStream(), true);
             userId = String.valueOf(UUID.randomUUID());
         }
-
-        /********************************/
-
         public String readLine() throws IOException {
             var line = this.reader.readLine();
             if (line == null) throw new IOException("Serveur disconnected");
             return line;
         }
-
-        /********************************/
-
         public void println(String message) {
             this.writer.println(message);
         }
-
-        /********************************/
-
         public void uuid() {
             String message = "UUID:"+this.userId;
             println(message);
@@ -43,14 +34,13 @@ public class ConnectionClientController {
 
         public void connexion(String username, String password) {
             String message = "LOGIN:" + username + ":" + password;
-            System.out.println(message);
             println(message);
         }
 
-        public void inscription(String username, String password) {
-            String message = "CREATEACCOUNT:" + username + ":" + password;
-            println(message);
-        }
+    public void inscription(String prenom, String nom, String email, String username, String password) {
+        String message = "CREATEACCOUNT:" + prenom + ":" + nom + ":" + email + ":" + username + ":" + password;
+        println(message);
+    }
 
         public void getListGame() {
             String message = "GETCURRENTLISTGAME";

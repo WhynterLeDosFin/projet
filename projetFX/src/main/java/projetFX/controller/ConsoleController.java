@@ -45,8 +45,6 @@ public class ConsoleController implements Initializable {
     @FXML
     public Button backButton;
 
-    //adding part. --------------------------------------------------------------------------------
-
     @FXML
     public Button validateButton;
 
@@ -67,8 +65,6 @@ public class ConsoleController implements Initializable {
 
     @FXML
     public ChoiceBox<Constructors> constructorPicker;
-
-    //select part. --------------------------------------------------------------------------------
 
     @FXML
     public void backToMenu(){

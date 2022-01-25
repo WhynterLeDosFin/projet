@@ -50,7 +50,7 @@ public class MenuController implements Initializable {
         }
 
     public void closeButtonOnAction(ActionEvent actionEvent) {
-            // Fct qui permet de close l'application, pouvant se passer de la windows top bar
+            // Fct qui permet de close l'application
             Stage stage = (Stage) closeButton.getScene().getWindow();
             stage.close();
         }

@@ -50,9 +50,7 @@ public class BddATK {
 
             resultSetId = rechercheIdUserConnected.executeQuery();
             resultSetId.next();
-            //System.out.println("resultSetId INT LA = " + resultSetId.getString(1));
             userId = resultSetId.getInt(1);
-            System.out.println(userId);
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -82,14 +80,18 @@ public class BddATK {
         return false;
     }
 
-    public boolean queryInscription(String username, String password) {
+    public boolean queryInscription(String nom, String prenom, String email, String username, String password) {
         try {
-            PreparedStatement inscriptionUser = this.connection.prepareStatement("INSERT INTO users VALUE (?,?)");
+            PreparedStatement inscriptionUser = this.connection.prepareStatement("INSERT INTO users (nom,prenom,email,username,password) VALUES (?,?,?,?,?)");
 
-            inscriptionUser.setString(1, username);
-            inscriptionUser.setString(2, password);
+            inscriptionUser.setString(1, nom);
+            inscriptionUser.setString(2, prenom);
+            inscriptionUser.setString(3, email);
+            inscriptionUser.setString(4, username);
+            inscriptionUser.setString(5, password);
 
-            inscriptionUser.executeUpdate();
+            System.out.println(inscriptionUser);
+            System.out.println(inscriptionUser.executeUpdate());
         } catch (SQLException e) {
             return false;
         }
@@ -109,11 +111,7 @@ public class BddATK {
                 creationConsole.setInt(3, Integer.parseInt(year));
             }
             creationConsole.setString(4, constructor);
-        /*    System.out.println("user connecté ICI FDP  = " + usernameConnected);
-            System.out.println(creationConsole);
-            getIdUserConnected();*/
             creationConsole.executeUpdate();
-            //System.out.println("creationConsole = " + creationConsole.executeUpdate());
 
         } catch (SQLException e) {
             return false;
@@ -127,7 +125,6 @@ public class BddATK {
             PreparedStatement creationGame = this.connection.prepareStatement("INSERT INTO jeux (" +
                     "nom,image,note,annee,nbJoueur,enLigne,fini,dateAchat,nomConsoles,nomEditeurs,username)" +
                     " VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-            System.out.println("AvantBordel");
             creationGame.setString(1, gameName);
             if (!image.isEmpty()) {
                 creationGame.setString(2, image);
@@ -138,17 +135,11 @@ public class BddATK {
 
             creationGame.setString(6, isOnline);
             creationGame.setString(7, isFinished);
-            System.out.println("AvantDateSet");
             creationGame.setString(8, buyDate);
             creationGame.setString(9, consoleId);
             creationGame.setString(10, editorId);
-            //creationGame.setInt(11, Integer.parseInt(userId));
             creationGame.setString(11, usernameConnected);
-            System.out.println("AvantGetUserIdCo");
-            System.out.println("getUserIdConnected() = " + getUserIdConnected());
-            System.out.println(creationGame);
             creationGame.executeUpdate();
-            //System.out.println("creationConsole = " + creationConsole.executeUpdate());
 
         } catch (SQLException e) {
             e.printStackTrace();

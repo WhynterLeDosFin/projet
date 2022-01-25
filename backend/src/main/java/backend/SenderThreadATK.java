@@ -14,7 +14,6 @@ public class SenderThreadATK extends Thread {
     public void setUsernameConnected(){
         bdd.usernameConnected=usernameConnected;
 
-        //return usernameConnected;
     }
 
     private ClientServerATK clientServer;
@@ -30,23 +29,20 @@ public class SenderThreadATK extends Thread {
         try {
             while (true) {
                 var line = this.clientServer.readLine();
-                System.out.println("line = " + line);
                 if( line != null ) handleLine(line);
                 else throw new IOException();
             }
         } catch (IOException e) {
-            //disconnect
             e.printStackTrace();
         }
     }
 
     public void handleLine(String message) throws IOException {
-         if (message.startsWith("LOGIN")) {  //LOGIN:USERNAME:PASSWORD
+         if (message.startsWith("LOGIN")) {
             String[] messageConnexion = message.split(":");
             String username = messageConnexion[1];
             usernameConnected = username;
 
-            System.out.println("username LA LA LA = " + username);
             String password = messageConnexion[2];
 
             setUsernameConnected();
@@ -66,21 +62,29 @@ public class SenderThreadATK extends Thread {
             }
 
         }
-        else if (message.startsWith("CREATEACCOUNT")) {
-            String[] messageInscription = message.split(":");
-            String username = messageInscription[1];
-            String password = messageInscription[2];
+         else if (message.startsWith("CREATEACCOUNT")) {
+             String[] messageInscription = message.split(":");
 
-            if (bdd.queryInscription(username, password)) {
-                System.out.println("Nouvelle inscription : " + username);
-                this.clientServer.println("INSCRIPTION:OK");
-            } else {
-                System.out.println("ERROR inscription : " + username);
-                this.clientServer.println("INSCRIPTION:KO");
-            }
-        }
+             String nom = messageInscription[1];
+             System.out.println("1"+nom);
+             String prenom = messageInscription[2];
+             System.out.println("2"+prenom);
+             String email = messageInscription[3];
+             System.out.println("3"+email);
+             String username = messageInscription[4];
+             System.out.println("4"+username);
+             String password = messageInscription[5];
+             System.out.println("5"+password);
+
+             if (bdd.queryInscription(nom,prenom,email,username, password)) {
+                 System.out.println("Nouvelle inscription : " + username);
+                 this.clientServer.println("INSCRIPTION:OK");
+             } else {
+                 System.out.println("ERROR inscription : " + username);
+                 this.clientServer.println("INSCRIPTION:KO");
+             }
+         }
         else if (message.startsWith("CREATECONSOLE")) {
-            //System.out.println("message = " + message);
             String[] messageConsole = message.split(":");
             String gameName = messageConsole[1];
             String constructor = messageConsole[2];
@@ -96,7 +100,6 @@ public class SenderThreadATK extends Thread {
             }
         }
         else if (message.startsWith("CREATEGAME")) {
-            System.out.println("message from SenderThread side = " + message);
             String[] messageGame = message.split(":");
             String gameName = messageGame[1];
             String image = messageGame[2];
@@ -126,7 +129,7 @@ public class SenderThreadATK extends Thread {
              clientServer.println(res);
          }
         else {
-            System.out.println("message = " + message);
+            //System.out.println("message = " + message);
         }
     }
 }

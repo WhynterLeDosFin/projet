@@ -37,13 +37,8 @@ public class FirstViewController implements Initializable {
     }
 
     @FXML
-    public void closeGame(ActionEvent e){ // Fct qui permet de close l'application, pouvant se passer de la windows top bar
+    public void closeGame(ActionEvent e){ // Fct qui permet de close l'application
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
-
-    /*@FXML
-    public void goToRegister(){
-        ProjetFX.setScene(new RegisterView());
-    }*/
 }

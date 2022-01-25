@@ -76,18 +76,35 @@
                         <InnerShadow />
                     </effect>
                 </Label>
-                <Label alignment="CENTER" layoutX="15.0" layoutY="190.0" prefHeight="16.0" prefWidth="86.0" text="Utilisateur">
+                <Label alignment="CENTER" layoutX="15.0" layoutY="84.0" prefHeight="16.0" prefWidth="78.0" text="Prénom">
                     <font>
                         <Font name="Arial" size="14.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" layoutX="11.0" layoutY="242.0" prefHeight="16.0" prefWidth="97.0" text="Mot de passe">
+                <TextField fx:id="firstNameTextField" layoutX="104.0" layoutY="80.0" promptText="Prénom" />
+                <Label alignment="CENTER" layoutX="7.0" layoutY="125.0" prefHeight="16.0" prefWidth="94.0" text="Nom" textAlignment="CENTER">
                     <font>
                         <Font name="Arial" size="14.0" />
                     </font>
                 </Label>
-                <TextField fx:id="usernameTextField" layoutX="108.0" layoutY="186.0" promptText="Utilisateur" />
-                <PasswordField fx:id="passwordPasswordField" layoutX="108.0" layoutY="238.0" prefHeight="24.0" prefWidth="170.0" promptText="Mot de passe" />
+                <TextField fx:id="lastNameTextField" layoutX="104.0" layoutY="121.0" promptText="Nom" />
+                <Label alignment="CENTER" layoutX="12.0" layoutY="204.0" prefHeight="16.0" prefWidth="86.0" text="Utilisateur">
+                    <font>
+                        <Font name="Arial" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="usernameTextField" layoutX="104.0" layoutY="200.0" promptText="Utilisateur" />
+                <Label alignment="CENTER" layoutX="7.0" layoutY="242.0" prefHeight="16.0" prefWidth="97.0" text="Mot de passe">
+                    <font>
+                        <Font name="Arial" size="14.0" />
+                    </font>
+                </Label>
+                <PasswordField fx:id="passwordPasswordField" layoutX="105.0" layoutY="238.0" prefHeight="24.0" prefWidth="170.0" promptText="Mot de passe" />
+                <Label fx:id="registerMessageLabel" alignment="CENTER" layoutX="7.0" layoutY="44.0" prefHeight="18.0" prefWidth="276.0" textFill="RED">
+                    <font>
+                        <Font name="Arial" size="13.0" />
+                    </font>
+                </Label>
                 <Button fx:id="registerButton" layoutX="31.0" layoutY="294.0" mnemonicParsing="false" onAction="#registerButtonOnAction" prefHeight="30.0" prefWidth="228.0" style="-fx-background-color: #263F70;" text="S'inscrire" textFill="WHITE">
                     <font>
                         <Font name="Arial" size="13.0" />
@@ -104,23 +121,12 @@
                         <DropShadow />
                     </effect>
                 </Button>
-                <Label fx:id="registerMessageLabel" alignment="CENTER" layoutX="7.0" layoutY="44.0" prefHeight="18.0" prefWidth="276.0" textFill="RED">
-                    <font>
-                        <Font name="Arial" size="13.0" />
-                    </font>
-                </Label>
-                <Label alignment="CENTER" layoutX="19.0" layoutY="86.0" prefHeight="16.0" prefWidth="78.0" text="Prénom">
+                <Label alignment="CENTER" layoutX="7.0" layoutY="167.0" prefHeight="16.0" prefWidth="94.0" text="E-mail" textAlignment="CENTER">
                     <font>
                         <Font name="Arial" size="14.0" />
                     </font>
                 </Label>
-                <Label alignment="CENTER" layoutX="11.0" layoutY="138.0" prefHeight="16.0" prefWidth="94.0" text="Nom" textAlignment="CENTER">
-                    <font>
-                        <Font name="Arial" size="14.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="firstNameTextField" layoutX="108.0" layoutY="82.0" promptText="Prénom" />
-                <TextField fx:id="lastNameTextField" layoutX="108.0" layoutY="134.0" promptText="Nom" />
+                <TextField fx:id="emailTextField" layoutX="104.0" layoutY="163.0" promptText="E-mail" />
             </children></AnchorPane>
     </center>
 </BorderPane>

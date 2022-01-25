@@ -22,7 +22,7 @@ public class CommandServer extends Thread {
             if (command.equals("exit"))
                 break;
         }
-        System.out.println("Fermeture du serveur - BDD");
+        System.out.println("DB SRV Closing...");
         bdd.closeBdd();
         System.exit(0);
     }

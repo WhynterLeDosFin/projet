@@ -22,9 +22,9 @@ public class ServerATK {
 
         new CommandServer(bdd, activeClient).start();
 
-        try (ServerSocket serverSocket  = new ServerSocket(8888)) {
+        try (ServerSocket serverSocket  = new ServerSocket(5555)) {
             while (true) {
-                System.out.println("Waiting new client");
+                System.out.println("En attente d'un client");
                 Socket socket = serverSocket.accept();
                 ClientServerATK clientServer = new ClientServerATK(socket, activeClient);
                 activeClient.add(clientServer);
