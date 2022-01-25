@@ -4,36 +4,110 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetFX.controller.GameController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="740.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetFX.controller.GameController">
    <children>
-      <Button id="backButton" fx:id="backButton" layoutX="14.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#backToMenu" text="Retour" />
-      <TextField id="nameField" fx:id="nameField" layoutX="41.0" layoutY="67.0" />
-      <TextField id="yearField" fx:id="yearField" layoutX="252.0" layoutY="67.0" />
-      <ChoiceBox id="gradePicker" fx:id="gradePicker" layoutX="41.0" layoutY="121.0" prefHeight="26.0" prefWidth="53.0" />
-      <Label id="dragDropLabel" fx:id="dragDropLabel" layoutX="144.0" layoutY="167.0" prefHeight="37.0" prefWidth="267.0" style="-fx-background-color: #E0E0E0#E0E0E0; -fx-background-radius: 15 15 15 15;" text="   File path">
+      <Button id="backButton" fx:id="backButton" layoutX="255.0" layoutY="289.0" mnemonicParsing="false" onMouseClicked="#backToMenu" text="Retour" />
+      <TextField id="nameField" fx:id="nameField" layoutX="282.0" layoutY="66.0" />
+      <TextField id="yearField" fx:id="yearField" layoutX="493.0" layoutY="66.0" />
+      <ChoiceBox id="gradePicker" fx:id="gradePicker" layoutX="282.0" layoutY="120.0" prefHeight="26.0" prefWidth="53.0" />
+      <Label id="dragDropLabel" fx:id="dragDropLabel" layoutX="385.0" layoutY="166.0" prefHeight="37.0" prefWidth="267.0" style="-fx-background-color: #E0E0E0#E0E0E0; -fx-background-radius: 15 15 15 15;" text="   File path">
          <font>
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="46.0" layoutY="50.0" text="Nom" />
-      <Label layoutX="257.0" layoutY="50.0" text="Année" />
-      <Button id="selectButton" fx:id="selectButton" layoutX="40.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#onSelectClic" text="Selectionner" />
-      <Label layoutX="46.0" layoutY="104.0" text="Note" />
-      <ChoiceBox id="playerNbPicker" fx:id="playerNbPicker" layoutX="144.0" layoutY="121.0" prefHeight="26.0" prefWidth="53.0" />
-      <Label layoutX="149.0" layoutY="104.0" text="Nb J" />
-      <ChoiceBox id="onlinePicker" fx:id="onlinePicker" layoutX="251.0" layoutY="121.0" prefHeight="26.0" prefWidth="53.0" />
-      <Label layoutX="256.0" layoutY="104.0" text="En ligne" />
-      <ChoiceBox id="finishPicker" fx:id="finishPicker" layoutX="358.0" layoutY="121.0" prefHeight="26.0" prefWidth="53.0" />
-      <Label layoutX="363.0" layoutY="104.0" text="Fini" />
-      <TextField id="buyField" fx:id="buyField" layoutX="41.0" layoutY="227.0" promptText="MM/AAAA" />
-      <Label layoutX="46.0" layoutY="210.0" text="Date d'achat" />
-      <ChoiceBox id="consolePicker" fx:id="consolePicker" layoutX="251.0" layoutY="227.0" prefHeight="26.0" prefWidth="159.0" />
-      <Label layoutX="256.0" layoutY="210.0" text="Plateforme" />
-      <ChoiceBox id="editorPicker" fx:id="editorPicker" layoutX="147.0" layoutY="277.0" prefHeight="26.0" prefWidth="159.0" />
-      <Label layoutX="152.0" layoutY="260.0" text="Editeurs" />
-      <Button id="validateButton" fx:id="validateButton" layoutX="363.0" layoutY="290.0" mnemonicParsing="false" onMouseClicked="#onValidateClick" text="Valider" />
+      <Label layoutX="287.0" layoutY="49.0" text="Nom" />
+      <Label layoutX="498.0" layoutY="49.0" text="Année" />
+      <Button id="selectButton" fx:id="selectButton" layoutX="281.0" layoutY="171.0" mnemonicParsing="false" onMouseClicked="#onSelectClic" text="Selectionner" />
+      <Label layoutX="287.0" layoutY="103.0" text="Note" />
+      <ChoiceBox id="playerNbPicker" fx:id="playerNbPicker" layoutX="385.0" layoutY="120.0" prefHeight="26.0" prefWidth="53.0" />
+      <Label layoutX="390.0" layoutY="103.0" text="Nb J" />
+      <ChoiceBox id="onlinePicker" fx:id="onlinePicker" layoutX="492.0" layoutY="120.0" prefHeight="26.0" prefWidth="53.0" />
+      <Label layoutX="497.0" layoutY="103.0" text="En ligne" />
+      <ChoiceBox id="finishPicker" fx:id="finishPicker" layoutX="599.0" layoutY="120.0" prefHeight="26.0" prefWidth="53.0" />
+      <Label layoutX="604.0" layoutY="103.0" text="Fini" />
+      <TextField id="buyField" fx:id="buyField" layoutX="282.0" layoutY="226.0" promptText="MM/AAAA" />
+      <Label layoutX="287.0" layoutY="209.0" text="Date d'achat" />
+      <ChoiceBox id="consolePicker" fx:id="consolePicker" layoutX="492.0" layoutY="226.0" prefHeight="26.0" prefWidth="159.0" />
+      <Label layoutX="497.0" layoutY="209.0" text="Plateforme" />
+      <ChoiceBox id="editorPicker" fx:id="editorPicker" layoutX="388.0" layoutY="276.0" prefHeight="26.0" prefWidth="159.0" />
+      <Label layoutX="393.0" layoutY="259.0" text="Editeurs" />
+      <Button id="validateButton" fx:id="validateButton" layoutX="604.0" layoutY="289.0" mnemonicParsing="false" onMouseClicked="#onValidateClick" text="Valider" />
+      <Label id="successLabel" fx:id="successLabel" layoutX="437.0" layoutY="19.0" text="SUCCESS" textFill="#55ff00" visible="false">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </Label>
+      <Label id="errorLabel" fx:id="errorLabel" layoutX="442.0" layoutY="19.0" text="ERROR" textFill="RED" visible="false">
+         <font>
+            <Font name="Arial Black" size="13.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutY="-8.0" prefHeight="339.0" prefWidth="230.0" style="-fx-background-color: #263F70;">
+         <children>
+            <Label alignment="CENTER" layoutX="3.0" layoutY="131.0" prefHeight="30.0" prefWidth="227.0" text="Game Book" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Verdana Bold" size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="3.0" layoutY="170.0" prefHeight="30.0" prefWidth="227.0" text="Gestionnaire de librairie " textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Line endX="100.0" layoutX="116.0" layoutY="169.0" startX="-100.0" stroke="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Line>
+            <Label alignment="CENTER" layoutX="3.0" layoutY="308.0" prefHeight="30.0" prefWidth="227.0" text="Copyright ©. Tous droits réservés." textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <Ellipse fill="#ffffff00" layoutX="115.0" layoutY="168.0" radiusX="112.0" radiusY="65.0" stroke="#727272" strokeType="INSIDE" />
+            <Circle fill="#e2e6e9" layoutX="51.0" layoutY="115.0" radius="12.0" stroke="#656565" strokeType="INSIDE">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Circle>
+            <Label alignment="CENTER" layoutX="3.0" layoutY="193.0" prefHeight="30.0" prefWidth="227.0" text="de jeux vidéo" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="164.0" layoutY="4.0" prefHeight="30.0" prefWidth="290.0" text="Ajout de jeu : " textAlignment="CENTER">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Label>
    </children>
 </Pane>

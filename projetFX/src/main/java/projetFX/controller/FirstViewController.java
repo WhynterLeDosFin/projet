@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import projetFX.ProjetFX;
 import projetFX.view.ConnectionView;
 import projetFX.view.RegisterView;
-import projetFX.view.TestView;
 
 import java.net.URL;
 import java.util.ResourceBundle;

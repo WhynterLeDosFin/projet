@@ -8,12 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
 import projetFX.Constructors;
 import projetFX.ProjetFX;
-import projetFX.view.TestView;
+import projetFX.view.MenuView;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -64,7 +63,7 @@ public class ConsoleController implements Initializable {
     public Label successLabel;
 
     @FXML
-    public Label errroLabel;
+    public Label errorLabel;
 
     @FXML
     public ChoiceBox<Constructors> constructorPicker;
@@ -73,7 +72,7 @@ public class ConsoleController implements Initializable {
 
     @FXML
     public void backToMenu(){
-        ProjetFX.setScene(new TestView());
+        ProjetFX.setScene(new MenuView());
     }
 
     @FXML
@@ -97,12 +96,21 @@ public class ConsoleController implements Initializable {
                 this.yearField.getText(),
                 getEncodedString(this.dragDropLabel.getText()));
         String line = ProjetFX.readLine();
+        this.successLabel.setVisible(false);
+        this.errorLabel.setVisible(false);
         if (line.startsWith("CREATECONSOLE:OK")) {
             this.successLabel.setVisible(true);
-            //emptyingForm();
+            emptyingForm();
         } else {
-            this.errroLabel.setVisible(true);
+            this.errorLabel.setVisible(true);
         }
+    }
+
+    private void emptyingForm() throws IOException {
+        nameField.setText("");
+        yearField.setText("");
+        dragDropLabel.setText("");
+        constructorPicker.setValue(null);
     }
 
     @FXML

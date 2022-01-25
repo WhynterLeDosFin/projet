@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import org.apache.commons.io.FileUtils;
 import projetFX.ProjetFX;
-import projetFX.view.TestView;
+import projetFX.view.MenuView;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -96,6 +96,12 @@ public class GameController implements Initializable {
     public Button validateButton;
 
     @FXML
+    public Label successLabel;
+
+    @FXML
+    public Label errorLabel;
+
+    @FXML
     public ChoiceBox gradePicker;
 
     @FXML
@@ -117,7 +123,7 @@ public class GameController implements Initializable {
 
     @FXML
     public void backToMenu(){
-        ProjetFX.setScene(new TestView());
+        ProjetFX.setScene(new MenuView());
     }
 
     @FXML
@@ -146,6 +152,30 @@ public class GameController implements Initializable {
                 this.buyField.getText(),
                 String.valueOf(this.consolePicker.getValue()),
                 String.valueOf(this.editorPicker.getValue()));
+
+        String line = ProjetFX.readLine();
+        this.successLabel.setVisible(false);
+        this.errorLabel.setVisible(false);
+
+        if (line.startsWith("CREATEGAME:OK")) {
+            this.successLabel.setVisible(true);
+            emptyingForm();
+        } else {
+            this.errorLabel.setVisible(true);
+        }
+    }
+
+    private void emptyingForm() throws IOException {
+        nameField.setText("");
+        yearField.setText("");
+        dragDropLabel.setText("");
+        buyField.setText("");
+        playerNbPicker.setValue(null);
+        onlinePicker.setValue(null);
+        finishPicker.setValue(null);
+        consolePicker.setValue(null);
+        editorPicker.setValue(null);
+        gradePicker.setValue(null);
     }
 
     @FXML

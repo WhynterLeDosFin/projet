@@ -1,8 +1,10 @@
 package projetFX.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import projetFX.ProjetFX;
 import projetFX.view.*;
 
@@ -28,6 +30,9 @@ public class MenuController implements Initializable {
         public Button selectConsoleButton;
 
         @FXML
+        public Button closeButton;
+
+        @FXML
         public void openAddGame(){
             ProjetFX.setScene(new AddGameView());
         }
@@ -44,4 +49,9 @@ public class MenuController implements Initializable {
             ProjetFX.setScene(new SelectConsoleView());
         }
 
+    public void closeButtonOnAction(ActionEvent actionEvent) {
+            // Fct qui permet de close l'application, pouvant se passer de la windows top bar
+            Stage stage = (Stage) closeButton.getScene().getWindow();
+            stage.close();
+        }
     }

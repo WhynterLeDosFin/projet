@@ -135,10 +135,9 @@ public class BddATK {
             creationGame.setInt(3, Integer.parseInt(grade));
             creationGame.setInt(4, Integer.parseInt(year));
             creationGame.setInt(5, Integer.parseInt(nbPlayer));
-            Boolean bool = isOnline == "Oui" ? true : false;
-            creationGame.setBoolean(6, bool);
-            bool = isFinished == "Oui" ? true : false;
-            creationGame.setBoolean(7, bool);
+
+            creationGame.setString(6, isOnline);
+            creationGame.setString(7, isFinished);
             System.out.println("AvantDateSet");
             creationGame.setString(8, buyDate);
             creationGame.setString(9, consoleId);

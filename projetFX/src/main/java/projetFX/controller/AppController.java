@@ -12,12 +12,8 @@ public class AppController implements Initializable {
     @FXML
     public Button button;
 
-    @FXML
-    public void test() {
-        this.button.setText("ma teube");
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ProjetFX.println("On est dans test1.fxml");
+        ProjetFX.println("On est dans menu_view.fxml");
     }
 }

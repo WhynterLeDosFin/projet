@@ -13,7 +13,7 @@ public abstract class View extends Scene {
 
     private static Parent load(String fxmlPath) {
         FXMLLoader loader = new FXMLLoader();
-        var resource = TestView.class.getResourceAsStream(fxmlPath);
+        var resource = MenuView.class.getResourceAsStream(fxmlPath);
         try {
             return loader.load(resource);
         } catch (IOException e) {

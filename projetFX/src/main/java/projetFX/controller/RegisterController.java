@@ -6,19 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
 import projetFX.ProjetFX;
 import projetFX.view.FirstView;
-import projetFX.view.RegisterView;
-import projetFX.view.TestView;
+import projetFX.view.MenuView;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.Socket;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class RegisterController {
 
@@ -116,7 +109,7 @@ public class RegisterController {
         try{
             Socket client = new Socket(host, DEFAULT_SERVER_PORT);
             ProjetFX.setClient(client);
-            ProjetFX.setScene(new TestView());
+            ProjetFX.setScene(new MenuView());
         }catch(IOException e){
             errorMessage.setVisible(true);
         }

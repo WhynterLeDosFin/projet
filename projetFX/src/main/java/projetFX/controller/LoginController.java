@@ -2,9 +2,7 @@ package projetFX.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -12,7 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 import projetFX.ProjetFX;
 import projetFX.view.FirstView;
-import projetFX.view.TestView;
+import projetFX.view.MenuView;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -61,7 +59,7 @@ public class LoginController implements Initializable {
 
     @FXML
     public void goToMenu(){
-        ProjetFX.setScene(new TestView());
+        ProjetFX.setScene(new MenuView());
     }
 
     /*public void loginButtonOnAction(ActionEvent e){
@@ -91,7 +89,7 @@ public class LoginController implements Initializable {
         try{
             this.client = new Socket(host, DEFAULT_SERVER_PORT);
             ProjetFX.setClient(client);
-            ProjetFX.setScene(new TestView());
+            ProjetFX.setScene(new MenuView());
         }catch(IOException e){
             errorMessage.setVisible(true);
         }
