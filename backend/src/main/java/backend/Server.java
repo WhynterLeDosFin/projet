@@ -1,34 +1,36 @@
 package backend;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.ArrayList;
 
 public class Server {
-    public static void main(String[] args) {
-        try {
-            ServerSocket server = new ServerSocket(5555);
-            while (true){
-                var client = server.accept();
-                System.out.printf("New connection from %s%n", client.getRemoteSocketAddress());
-                BufferedReader reader = new BufferedReader(new InputStreamReader((client.getInputStream())));
-                PrintWriter out = new PrintWriter(client.getOutputStream(), true);
-                Thread clientHandler = new Thread(()->{
-                    while (true){
-                        try {
-                            String line;
-                            if ((line = reader.readLine()) == null) break;
-                            System.out.printf("Received from %s: %s%n", client.getRemoteSocketAddress(), line);
-                            out.println(line);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
 
-                    }
-                });
-                clientHandler.start();
+    public static void main(String[] args) throws IOException {
+
+
+        BddConnectionQuery bdd = null;
+
+        try {
+            bdd = new BddConnectionQuery();
+        } catch (Exception e) {
+            System.exit(0);
+        }
+
+        ArrayList<ClientServer> activeClient = new ArrayList<>();
+
+        new CommandServer(bdd, activeClient).start();
+
+        try (ServerSocket serverSocket  = new ServerSocket(5555)) {
+            while (true) {
+                System.out.println("En attente d'un client");
+                Socket socket = serverSocket.accept();
+                ClientServer clientServer = new ClientServer(socket, activeClient);
+                activeClient.add(clientServer);
+                new SendThread(clientServer, bdd).start();
             }
-        }catch (IOException e){
-            e.printStackTrace();
         }
     }
 }
+

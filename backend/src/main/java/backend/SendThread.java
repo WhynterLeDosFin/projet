@@ -1,13 +1,8 @@
 package backend;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
-public class SenderThreadATK extends Thread {
+public class SendThread extends Thread {
 
     public static String usernameConnected;
 
@@ -16,10 +11,10 @@ public class SenderThreadATK extends Thread {
 
     }
 
-    private ClientServerATK clientServer;
-    private BddATK bdd;
+    private ClientServer clientServer;
+    private BddConnectionQuery bdd;
 
-    public SenderThreadATK(ClientServerATK clientServer, BddATK bdd) {
+    public SendThread(ClientServer clientServer, BddConnectionQuery bdd) {
         this.clientServer = clientServer;
         this.bdd = bdd;
     }

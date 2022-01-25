@@ -3,9 +3,8 @@ package backend;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class BddATK {
+public class BddConnectionQuery {
 
     private Connection connection;
 
@@ -16,7 +15,7 @@ public class BddATK {
     String username = "remote_user";
     String password = "rklj234§!@";
 
-    public BddATK() throws BddExceptionATK {
+    public BddConnectionQuery() throws BddException {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             this.connection = DriverManager.getConnection(url, username, password);

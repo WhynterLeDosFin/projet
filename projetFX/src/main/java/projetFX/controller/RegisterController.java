@@ -2,29 +2,15 @@ package projetFX.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
-import org.w3c.dom.Text;
 import projetFX.ProjetFX;
 import projetFX.view.FirstView;
-import projetFX.view.RegisterView;
-import projetFX.view.MenuView;
-
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.Socket;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 
 public class RegisterController {
-
-    @FXML
-    private Button returnButton;
 
     @FXML
     private TextField usernameTextField;

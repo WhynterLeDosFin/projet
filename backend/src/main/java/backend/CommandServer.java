@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class CommandServer extends Thread {
 
-    BddATK bdd;
-    ArrayList<ClientServerATK> activeClient;
+    BddConnectionQuery bdd;
+    ArrayList<ClientServer> activeClient;
     Scanner scanner = new Scanner(System.in);
 
-    public CommandServer(BddATK bdd, ArrayList<ClientServerATK> activeClient) {
+    public CommandServer(BddConnectionQuery bdd, ArrayList<ClientServer> activeClient) {
         this.bdd = bdd;
         this.activeClient = activeClient;
     }

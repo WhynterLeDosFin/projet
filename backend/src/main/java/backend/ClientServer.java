@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class ClientServerATK {
+public class ClientServer {
 
     private Socket socket;
     private BufferedReader reader;
@@ -15,20 +15,15 @@ public class ClientServerATK {
 
     private String usernameFromBdd;
 
-    public ClientServerATK(Socket socket, ArrayList<ClientServerATK> activeClient) throws IOException {
+    public ClientServer(Socket socket, ArrayList<ClientServer> activeClient) throws IOException {
         this.socket = socket;
         reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         writer = new PrintWriter(socket.getOutputStream(), true);
     }
 
-    // !! WARNING !! if IOException -> disconnect
     public String readLine() throws IOException{
         var line = this.reader.readLine();
         return line;
-    }
-
-    public String getUsernameFromBdd() {
-        return usernameFromBdd;
     }
 
     public void setUsernameFromBdd(String usernameFromBdd) {

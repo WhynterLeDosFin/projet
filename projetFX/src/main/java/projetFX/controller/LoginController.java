@@ -3,8 +3,6 @@ package projetFX.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
@@ -22,27 +20,12 @@ public class LoginController implements Initializable {
     public Socket client;
 
     @FXML
-    private Button returnButton;
-
-    @FXML
-    private Label loginMessageLabel;
-
-    @FXML
     private TextField usernameTextField;
 
     @FXML
     private PasswordField passwordPasswordField;
 
     private static int DEFAULT_SERVER_PORT = 5555;
-
-    @FXML
-    public Button submitButton;
-
-    @FXML
-    public TextField ipTextField;
-
-    @FXML
-    public Label errorMessage;
 
     private String stageUsername;
 
